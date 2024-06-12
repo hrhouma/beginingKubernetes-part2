@@ -1,6 +1,6 @@
-### Exercices pour la Gestion des Déploiements dans Kubernetes
+# Exercices pour la Gestion des Déploiements dans Kubernetes
 
-#### Exercice 1: Création et déploiement d'un serveur Apache
+# Exercice 1: Création et déploiement d'un serveur Apache
 
 **Objectif :** Configurer et déployer un déploiement pour un serveur web Apache.
 
@@ -43,7 +43,7 @@
    kubectl delete deployment apache
    ```
 
-#### Exercice 2: Configuration d'un déploiement Redis pour le caching
+# Exercice 2: Configuration d'un déploiement Redis pour le caching
 
 **Objectif :** Configurer et déployer un déploiement pour une instance Redis.
 
@@ -86,7 +86,7 @@
    kubectl delete deployment redis
    ```
 
-#### Exercice 3: Mise en place d'un déploiement PostgreSQL pour une application de base de données
+# Exercice 3: Mise en place d'un déploiement PostgreSQL pour une application de base de données
 
 **Objectif :** Déployer un serveur PostgreSQL dans un environnement Kubernetes.
 
@@ -131,7 +131,7 @@
 
 Voici d'autres exercices pour compléter la série, couvrant les applications restantes de votre liste :
 
-#### Exercice 4: Déploiement de MySQL comme base de données relationnelle
+# Exercice 4: Déploiement de MySQL comme base de données relationnelle
 
 **Objectif :** Configurer et déployer MySQL dans un environnement Kubernetes.
 
@@ -174,7 +174,7 @@ Voici d'autres exercices pour compléter la série, couvrant les applications re
    kubectl delete deployment mysql
    ```
 
-#### Exercice 5: Configuration de Node.js pour des applications serveur
+# Exercice 5: Configuration de Node.js pour des applications serveur
 
 **Objectif :** Déployer une application Node.js simple dans Kubernetes.
 
@@ -217,7 +217,7 @@ Voici d'autres exercices pour compléter la série, couvrant les applications re
    kubectl delete deployment nodejs-app
    ```
 
-#### Exercice 6: Mise en place de Tomcat pour des applications Java
+# Exercice 6: Mise en place de Tomcat pour des applications Java
 
 **Objectif :** Déployer un conteneur de servlets Tomcat.
 
@@ -263,7 +263,7 @@ Voici d'autres exercices pour compléter la série, couvrant les applications re
 
 Voici les exercices manquants pour les applications restantes :
 
-#### Exercice 7: Configuration de Elasticsearch pour l'analyse de données
+# Exercice 7: Configuration de Elasticsearch pour l'analyse de données
 
 **Objectif :** Déployer Elasticsearch, un moteur de recherche et d'analyse puissant.
 
@@ -307,7 +307,7 @@ Voici les exercices manquants pour les applications restantes :
    kubectl delete deployment elasticsearch
    ```
 
-#### Exercice 8: Mise en place de RabbitMQ pour la gestion de messages
+# Exercice 8: Mise en place de RabbitMQ pour la gestion de messages
 
 **Objectif :** Configurer et déployer RabbitMQ, un broker de messages.
 
@@ -351,9 +351,9 @@ Voici les exercices manquants pour les applications restantes :
    kubectl delete deployment rabbitmq
    ```
 
-Voici les exercices pour le déploiement de Grafana, Jenkins, un environnement Java avec Maven, et Prometheus, complétant ainsi la gamme d'applications pour vos cours sur la gestion des déploiements dans Kubernetes.
+- Exercices pour le déploiement de Grafana, Jenkins, un environnement Java avec Maven, et Prometheus, complétant ainsi la gamme d'applications pour notre cours sur la gestion des déploiements dans Kubernetes.
 
-### Exercice 9: Déploiement de Grafana pour la visualisation des données
+# Exercice 9: Déploiement de Grafana pour la visualisation des données
 
 **Objectif :** Déployer Grafana, une plateforme pour la visualisation et l'analyse de données.
 
@@ -396,7 +396,7 @@ Voici les exercices pour le déploiement de Grafana, Jenkins, un environnement J
    kubectl delete deployment grafana
    ```
 
-### Exercice 10: Configuration de Jenkins pour l'intégration continue
+# Exercice 10: Configuration de Jenkins pour l'intégration continue
 
 **Objectif :** Déployer Jenkins, un outil d'automatisation, notamment pour l'intégration continue.
 
@@ -439,7 +439,7 @@ Voici les exercices pour le déploiement de Grafana, Jenkins, un environnement J
    kubectl delete deployment jenkins
    ```
 
-### Exercice 11: Déploiement de Java avec Maven
+# Exercice 11: Déploiement de Java avec Maven
 
 **Objectif :** Configurer et déployer un environnement Java avec Maven pour la gestion de projets.
 
@@ -482,7 +482,7 @@ Voici les exercices pour le déploiement de Grafana, Jenkins, un environnement J
    kubectl delete deployment java-maven
    ```
 
-### Exercice 12: Configuration de Prometheus pour le monitoring
+# Exercice 12: Configuration de Prometheus pour le monitoring
 
 **Objectif :** Déployer Prometheus pour la surveillance des systèmes et des services.
 
@@ -527,9 +527,9 @@ Voici les exercices pour le déploiement de Grafana, Jenkins, un environnement J
    kubectl delete deployment prometheus
    ```
 
-Bien sûr, voici les exercices structurés pour vos étudiants avec des déploiements multi-conteneurs dans Kubernetes :
+## Exercices avec des déploiements multi-conteneurs dans Kubernetes :
 
-### Exercice 13: Déploiement de WordPress avec MySQL
+# Exercice 13: Déploiement de WordPress avec MySQL
 
 **Objectif :** Configurer et déployer un environnement WordPress avec une base de données MySQL dans le même Pod.
 
@@ -637,3 +637,52 @@ Bien sûr, voici les exercices structurés pour vos étudiants avec des déploie
    kubectl delete deployment jenkins-sonarqube
    ```
 
+### Exercice 15: Déploiement de Prometheus avec Grafana pour le monitoring
+
+**Objectif :** Configurer et déployer Prometheus pour la collecte de métriques et Grafana pour la visualisation, dans le même Pod.
+
+1. **Créez un fichier YAML nommé `prometheus-grafana-deployment.yaml`** avec le contenu suivant :
+   ```yaml
+   apiVersion: apps/v1
+   kind: Deployment
+   metadata:
+     name: prometheus-grafana
+   spec:
+     replicas: 1
+     selector:
+       matchLabels:
+         app: prometheus-grafana
+     template:
+       metadata:
+         labels:
+           app: prometheus-grafana
+       spec:
+         containers:
+         - name: prometheus
+           image: prom/prometheus:v2.26.0
+           ports:
+           - containerPort: 9090
+         - name: grafana
+           image: grafana/grafana:latest
+           ports:
+           - containerPort: 3000
+   ```
+
+2. **Déployez votre fichier YAML** :
+   ```bash
+   kubectl apply -f prometheus-grafana-deployment.yaml
+   ```
+
+3. **Vérifiez le déploiement** :
+   ```bash
+   kubectl get deployments
+   kubectl describe deployment prometheus-grafana
+   ```
+
+4. **Suppression du déploiement** :
+   ```bash
+   kubectl delete deployment prometheus-grafana
+   ```
+
+- Ce déploiement combiné vous permettra de voir comment deux services peuvent coopérer dans un même Pod pour fournir une solution complète de monitoring.
+- Ils apprendront comment les conteneurs peuvent partager des ressources et communiquer efficacement, tout en maintenant une isolation nécessaire pour la sécurité et la gestion.
