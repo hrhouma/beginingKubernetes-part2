@@ -108,8 +108,6 @@ kubectl delete pod nginx
 ```
 
 
-
-
 # 9 - Autres commandes
 
 ## 9.1. Commandes pour entrer dans le POD
@@ -128,3 +126,14 @@ exit
 ```bash
 minikube dashboard
 ```
+
+# 10 - Annexe 1
+
+- minikube start 
+- minikube profile list
+- minikube delete --profile minikube
+- minikube start --vm-driver=virtualbox --cpus 8 --memory 16g
+- minikube stop
+
+# Références : 
+- https://stackoverflow.com/questions/72147700/deleting-minikube-cluster-so-i-can-create-a-larger-cluster-with-more-cpus
