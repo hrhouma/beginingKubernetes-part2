@@ -36,10 +36,10 @@ Bonne pratique !
 - [Partie 10 : Pratique 10 - Résumé des Manipulations et des Concepts de 1 à 10](#partie-10-pratique-10---résumé-des-manipulations-et-des-concepts-de-1-à-10)
 
 ### Partie 1 : Installation de Minikube
-[🔗 Lien vers le tutoriel]()
+[🔗 Lien vers le tutoriel](https://github.com/hrhouma/beginingKubernetes-part2/blob/main/01-k8s-pratiques-v-1/00-installation/Methode-1-minikube/1-minikube.txt)
 
 ### Partie 2 : Pratique 01
-[🔗 Lien vers la pratique](https://github.com/hrhouma/beginingKubernetes-part2/blob/main/01-k8s-pratiques-v-1/00-installation/Methode-1-minikube/1-minikube.txt)
+[🔗 Lien vers la pratique]()
 
 ### Partie 3 : Théorie
 [🔗 Lien vers la théorie](https://github.com/hrhouma/beginingKubernetes-part2/tree/main/01-k8s-pratiques-v-1/01-pratique1)
