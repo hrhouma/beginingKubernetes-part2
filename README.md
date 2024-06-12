@@ -54,9 +54,7 @@ Bonne pratique !
 [🔗 Lien vers la gestion des déploiements](https://github.com/hrhouma/beginingKubernetes-part2/02-k8s-pratiques-v-2/01-(PRATIQUES)-Introduction-aux-objets-Kubernetes-partie1/03-Gestion-des-deploiements.md)
 
 ### Partie 7 : Pratique 07 - Application Directe de la Pratique 06
-[🔗 Lien vers l'exercice](https://github.com/hrhouma/beginingKubernetes-part2/02-k8s-pratiques-v
-
--2/01-(PRATIQUES)-Introduction-aux-objets-Kubernetes-partie1/exercices/03-Gestion-des-Déploiements-dans-Kubernetes.md)
+[🔗 Lien vers l'exercice](https://github.com/hrhouma/beginingKubernetes-part2/02-k8s-pratiques-v-2/01-(PRATIQUES)-Introduction-aux-objets-Kubernetes-partie1/exercices/03-Gestion-des-Déploiements-dans-Kubernetes.md)
 
 ### Partie 8 : Pratique 08 - Gestion des Services
 [🔗 Lien vers la gestion des services](https://github.com/hrhouma/beginingKubernetes-part2/02-k8s-pratiques-v-2/01-(PRATIQUES)-Introduction-aux-objets-Kubernetes-partie1/04-Introduction-aux-services.md)
