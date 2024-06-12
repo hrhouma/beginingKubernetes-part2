@@ -127,7 +127,7 @@ exit
 minikube dashboard
 ```
 
-# 10 - Annexe 1
+# 10 - Annexe 1 - TROUBLESHOOTING
 
 - minikube start 
 - minikube profile list
