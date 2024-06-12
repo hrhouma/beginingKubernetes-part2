@@ -108,3 +108,23 @@ kubectl delete pod nginx
 ```
 
 
+
+
+# 9 - Autres commandes
+
+## 9.1. Commandes pour entrer dans le POD
+```bash
+minikube ssh
+docker ps
+docker ps | grep -i nginx  (récupérer le ID)
+docker exec -it 53209 sh
+ls
+cat /etc/os-release
+exit
+exit
+```
+## 9.2. Ouvrir un autre terminal pour vérifier le dashboard 
+## IL faut le laisser OUVERt !!!
+```bash
+minikube dashboard
+```
