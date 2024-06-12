@@ -1,15 +1,15 @@
 # Tutoriel Kubernetes: Gestion des Pods
 
-## Introduction
+# 1 - Introduction
 
 Ce tutoriel guide les étudiants à travers les étapes de base pour la création, la gestion et la suppression de Pods dans un environnement Kubernetes. En utilisant l'outil en ligne de commande `kubectl` et un fichier de configuration YAML, nous apprendrons comment déployer un serveur web Nginx simple.
 
-## Prérequis
+# 2 - Prérequis
 
 - Avoir installé `kubectl`, l'interface en ligne de commande pour Kubernetes.
 - Avoir accès à un cluster Kubernetes, comme Minikube ou un cluster configuré via un fournisseur de cloud.
 
-## Étape 1: Création du fichier YAML
+# 3 - Étape 1: Création du fichier YAML
 
 Un Pod est l'unité la plus petite et la plus simple dans Kubernetes. Il représente un ou plusieurs conteneurs qui doivent être gérés ensemble. Commencez par créer un fichier YAML qui définit un Pod contenant un serveur web Nginx.
 
@@ -32,7 +32,7 @@ spec:
 
 Ce fichier définit un Pod nommé `nginx` utilisant l'image Docker `nginx:alpine`, qui est une version légère de Nginx.
 
-## Étape 2: Déploiement du Pod
+# 4- Étape 2: Déploiement du Pod
 
 Avec le fichier YAML prêt, vous pouvez maintenant créer le Pod dans votre cluster Kubernetes.
 
@@ -44,7 +44,7 @@ Avec le fichier YAML prêt, vous pouvez maintenant créer le Pod dans votre clus
 kubectl apply -f mypod.yaml
 ```
 
-## Étape 3: Vérification du Pod
+# 5- Étape 3: Vérification du Pod
 
 Après la création du Pod, il est important de vérifier son état et de s'assurer qu'il fonctionne correctement.
 
@@ -62,7 +62,7 @@ kubectl describe pod nginx
 
 Ces commandes fournissent des informations sur l'état du Pod, les conteneurs qu'il contient, et d'autres détails utiles comme l'adresse IP du Pod et les ports ouverts.
 
-## Étape 4: Suppression du Pod
+# 6 - Étape 4: Suppression du Pod
 
 Une fois que vous avez fini avec le Pod, ou si vous voulez recommencer le processus, vous pouvez supprimer le Pod.
 
@@ -72,7 +72,39 @@ Une fois que vous avez fini avec le Pod, ou si vous voulez recommencer le proces
 kubectl delete pod nginx
 ```
 
-## Conclusion
+# 7 - Conclusion
 
 Ce tutoriel vous a guidé à travers les étapes de base de la gestion des Pods dans Kubernetes, en utilisant `kubectl`. Vous avez appris comment définir un Pod avec un fichier YAML, comment le déployer, vérifier son état, et enfin, comment le supprimer proprement. Utilisez ces compétences pour explorer plus avant Kubernetes et gérer des applications plus complexes.
+
+# 8 - Résumé
+
+
+```bash
+# Créer le fichier YAML pour le Pod
+echo "
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx:alpine
+    ports:
+    - containerPort: 80
+" > mypod.yaml
+
+# Déployer le Pod
+kubectl apply -f mypod.yaml
+
+# Lister tous les Pods pour vérifier l'état
+kubectl get pods
+
+# Obtenir des détails sur le Pod 'nginx'
+kubectl describe pod nginx
+
+# Supprimer le Pod
+kubectl delete pod nginx
+```
+
 
