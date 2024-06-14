@@ -50,12 +50,20 @@
 - Vérifiez la connectivité entre les conteneurs en utilisant des commandes `ping` à partir des conteneurs.
 
 
+
 4. **Exercice 3 : Tests de Connectivité**
 
    - Vérifiez la connectivité entre les conteneurs en utilisant des commandes `ping` à partir des conteneurs.
    - Les pings doivent réussir, indiquant que les conteneurs peuvent communiquer entre eux sur les réseaux configurés.
 
-5. **Critères d'Évaluation :**
+5. **Exercice 4 : Réécrire les configurations dans un docker-compose.yml**
+
+   - Écrire un fichier `docker-compose.yml` qui inclut les configurations pour tous les conteneurs créés dans les exercices précédents.
+   - Le fichier `docker-compose.yml` doit inclure la configuration des réseaux, des volumes, et des conteneurs.
+   - Le fichier doit permettre de recréer l'intégralité de l'infrastructure en une seule commande.
+
+
+6. **Critères d'Évaluation :**
    - **Création de Conteneurs :** Les conteneurs `web-container`, `db-container`, et `app-container` sont créés correctement et fonctionnent comme prévu.
    - **Configuration des Ports :** Les ports sont configurés correctement, permettant l'accès aux services sur les ports spécifiés.
    - **Création et Utilisation de Réseaux Docker :** Les réseaux Docker `frontend-network` et `backend-network` sont créés et les conteneurs y sont connectés correctement.
