@@ -96,6 +96,12 @@
 
    - Configurez les nouveaux conteneurs avec les volumes et les réseaux appropriés.
 
+9. **Exercice 8 : Réécrire les configurations dans un docker-compose.yml**
+
+   - Écrire un fichier `docker-compose.yml` qui inclut les configurations pour tous les conteneurs créés dans les exercices précédents.
+   - Le fichier `docker-compose.yml` doit inclure la configuration des réseaux, des volumes, et des conteneurs.
+   - Le fichier doit permettre de recréer l'intégralité de l'infrastructure en une seule commande.
+
 ### Critères d'Évaluation :
    - **Création de Conteneurs :** Les conteneurs `web-container`, `db-container`, `app-container`, `priv-registry`, `web-container-new`, `db-container-new` et `app-container-new` sont créés correctement et fonctionnent comme prévu.
    - **Configuration des Ports :** Les ports sont configurés correctement, permettant l'accès aux services sur les ports spécifiés.
@@ -111,3 +117,5 @@
 - Utilisez des commandes claires et précises.
 - Vérifiez chaque étape pour vous assurer que les conteneurs fonctionnent comme attendu.
 - Documentez votre travail de manière détaillée.
+
+
