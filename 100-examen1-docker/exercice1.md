@@ -10,7 +10,7 @@
 
 1. **Préparation :**
    - Assurez-vous que Docker est installé et fonctionne correctement sur votre machine.
-   - Créez un répertoire nommé `exam-pratique` pour stocker vos fichiers et configurations.
+   - Créez un répertoire nommé `exam-pratique-1` pour stocker vos fichiers et configurations.
 
 2. **Exercice 1 : Création de Conteneurs**
 
