@@ -4,10 +4,21 @@
 
 Les Services dans Kubernetes permettent de communiquer avec un ou plusieurs Pods. Habituellement, les Pods sont éphémères et peuvent changer fréquemment d'adresse IP. Les Services fournissent une adresse IP fixe et un nom DNS pour un ensemble de Pods, et chargent également la balance du trafic vers ces Pods.
 
+# Référence très importante:
+- https://www.youtube.com/watch?v=5lzUpDtmWgM
+  
 # 2 - Prérequis
 
 - Avoir installé `kubectl`.
 - Avoir accès à un cluster Kubernetes.
+- Avoir fait le lab précédent 03-Gestion-des-deploiments et avoir crée 1 déploiement nginx avec 3 pods avec cette section
+```yaml
+  template:
+    metadata:
+      labels:
+        app: nginx
+  ```
+- Avoir regardé la vidéo sur les services de type nodePort : ##  https://www.youtube.com/watch?v=5lzUpDtmWgM 
 
 # 3 - Étape 1: Création du fichier YAML pour le Service
 
@@ -30,8 +41,27 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 80
+      nodePort: 30008
 ```
-##  https://www.youtube.com/watch?v=5lzUpDtmWgM 
+
+
+- particulièrement, cette section est importante 
+```yaml
+spec:
+  type: NodePort
+  selector:
+    app: nginx
+```
+puisque nous allons communiquer avec les pods qui ont cette section
+```yaml
+  template:
+    metadata:
+      labels:
+        app: nginx
+```
+- En effet, appelez vous que dans la pratique précédente, nous avons crée ce déploiement
+
+
 # 4- Étape 2: Déploiement du Service
 
 Déployez le Service dans votre cluster Kubernetes pour exposer le déploiement `nginx`.
