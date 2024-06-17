@@ -59,7 +59,35 @@ puisque nous allons communiquer avec les pods qui ont cette section
       labels:
         app: nginx
 ```
-- En effet, appelez vous que dans la pratique précédente, nous avons crée ce déploiement
+- En effet, rappelez vous que dans la pratique précédente, nous avons crée ce déploiement
+
+*mydeployment.yaml*
+```ssh
+kubect apply -f mydeployment.yaml
+```
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
+```
+
 
 
 # 4- Étape 2: Déploiement du Service
@@ -90,11 +118,18 @@ kubectl get services
 kubectl describe service nginx-service
 ```
 
+
+```bash
+minikube ip
+curl IP: 30008
+
+```
+
 # 6 - Conclusion
 
 Les Services sont essentiels pour la gestion du trafic réseau dans les applications Kubernetes, fournissant un point d'accès stable aux applications dynamiques. Ce tutoriel vous a guidé à travers la création d'un Service qui expose un déploiement Nginx dans un cluster Kubernetes.
 
-# 7 - Résumé des Commandes
+# 7 - Résumé des Commandes (IGNOREZ - ANCIEN)
 
 ```bash
 # Créer le fichier YAML pour le Service
