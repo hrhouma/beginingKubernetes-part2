@@ -62,6 +62,9 @@ kubectl describe pod nginx
 
 Ces commandes fournissent des informations sur l'état du Pod, les conteneurs qu'il contient, et d'autres détails utiles comme l'adresse IP du Pod et les ports ouverts.
 
+```bash
+kubectl describe pod nginx | grep -i nginx
+```
 # 6 - Étape 4: Suppression du Pod
 
 Une fois que vous avez fini avec le Pod, ou si vous voulez recommencer le processus, vous pouvez supprimer le Pod.
