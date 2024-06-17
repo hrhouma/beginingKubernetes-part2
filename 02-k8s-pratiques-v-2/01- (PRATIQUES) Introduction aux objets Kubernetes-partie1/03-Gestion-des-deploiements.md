@@ -81,7 +81,7 @@ kubectl describe deployment nginx
 
 
 
-# 7 - Étape 4: Suppression du Déploiement
+# 7 - Étape 5: Suppression du Déploiement
 
 Pour supprimer le déploiement lorsque vous n'en avez plus besoin :
 
@@ -129,6 +129,20 @@ kubectl get deployments
 
 # Obtenir des détails sur le déploiement 'nginx'
 kubectl describe deployment nginx
+
+# Suppression des pods
+- Affichez les ids de vos pods en exécutant  *kubectl get pods*
+
+- Récupérer l'id de 1 de vos pods
+
+- Comptez le nombre de pods ( Nous avons 3 puisque c'est spécifié dans le déploiement)
+
+- Supprimer ce pod en utilisant son id avec la commande *kubectl delete po id_pod_récupéré*
+
+- Afficher les pods
+
+- Comment vous expliquez que nous avons toujours 3 pods ???????
+
 
 # Supprimer le déploiement
 kubectl delete deployment nginx
