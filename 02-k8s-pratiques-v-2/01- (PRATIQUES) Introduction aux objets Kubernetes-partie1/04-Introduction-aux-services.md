@@ -31,7 +31,7 @@ spec:
       port: 80
       targetPort: 80
 ```
-
+##  https://www.youtube.com/watch?v=5lzUpDtmWgM 
 # 4- Étape 2: Déploiement du Service
 
 Déployez le Service dans votre cluster Kubernetes pour exposer le déploiement `nginx`.
