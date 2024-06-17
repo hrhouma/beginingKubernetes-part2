@@ -23,7 +23,7 @@ kind: Deployment
 metadata:
   name: nginx
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: nginx
@@ -61,13 +61,27 @@ Après le déploiement, il est essentiel de vérifier son état pour s'assurer q
 kubectl get deployments
 ```
 
+
 - **Pour obtenir des détails plus spécifiques sur le déploiement 'nginx', utilisez** :
 
 ```bash
 kubectl describe deployment nginx
 ```
 
-# 6 - Étape 4: Suppression du Déploiement
+
+
+# 6- Étape 4: Suppression de quelques pods du déploiement et observation si nous avons encore le même nombre de pods
+
+- Affichez les ids de vos pods en exécutant  *kubectl get pods*
+- Récupérer l'id de 1 de vos pods
+- Comptez le nombre de pods ( Nous avons 3 puisque c'est spécifié dans le déploiement)
+- Supprimer ce pod en utilisant son id avec la commande *kubectl delete po id_pod_récupéré*
+- Afficher les pods
+- Comment vous expliquez que nous avons toujours 3 pods ???????
+
+
+
+# 7 - Étape 4: Suppression du Déploiement
 
 Pour supprimer le déploiement lorsque vous n'en avez plus besoin :
 
@@ -77,11 +91,11 @@ Pour supprimer le déploiement lorsque vous n'en avez plus besoin :
 kubectl delete deployment nginx
 ```
 
-# 7 - Conclusion
+# 8 - Conclusion
 
 Ce tutoriel a guidé les étapes de la gestion d'un déploiement dans Kubernetes, couvrant la création, le déploiement, la vérification et la suppression. Vous avez appris à utiliser `kubectl` pour gérer des applications plus complexes en production.
 
-# 8 - Résumé des Commandes
+# 9 - Résumé des Commandes
 
 ```bash
 # Créer le fichier YAML pour le déploiement
