@@ -76,7 +76,7 @@ kubectl describe deployment nginx
 - Récupérer l'id de 1 de vos pods
 - Comptez le nombre de pods ( Nous avons 3 puisque c'est spécifié dans le déploiement)
 - Supprimer ce pod en utilisant son id avec la commande *kubectl delete po id_pod_récupéré*
-- Afficher les pods
+- Afficher les pods avec *kubectl get po*
 - Comment vous expliquez que nous avons toujours 3 pods ???????
 
 
@@ -98,14 +98,14 @@ Ce tutoriel a guidé les étapes de la gestion d'un déploiement dans Kubernetes
 # 9 - Résumé des Commandes
 
 ```bash
-# Créer le fichier YAML pour le déploiement
+# Créer le fichier YAML pour le déploiement - commande numéro 1
 echo "
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: nginx
@@ -121,16 +121,18 @@ spec:
         - containerPort: 80
 " > mydeployment.yaml
 
-# Déployer le déploiement
+
+
+# Déployer le déploiement - commande numéro 2
 kubectl apply -f mydeployment.yaml
 
-# Lister les déploiements pour vérifier l'état
+# Lister les déploiements pour vérifier l'état - commande numéro 3
 kubectl get deployments
 
-# Obtenir des détails sur le déploiement 'nginx'
+# Obtenir des détails sur le déploiement 'nginx' - commande numéro 4
 kubectl describe deployment nginx
 
-# Suppression des pods
+# Suppression des pods - commande numéro 5 (*kubectl delete po id_pod_récupéré*)
 - Affichez les ids de vos pods en exécutant  *kubectl get pods*
 
 - Récupérer l'id de 1 de vos pods
@@ -139,7 +141,7 @@ kubectl describe deployment nginx
 
 - Supprimer ce pod en utilisant son id avec la commande *kubectl delete po id_pod_récupéré*
 
-- Afficher les pods
+- Afficher les pods avec *kubectl get po*
 
 - Comment vous expliquez que nous avons toujours 3 pods ???????
 
