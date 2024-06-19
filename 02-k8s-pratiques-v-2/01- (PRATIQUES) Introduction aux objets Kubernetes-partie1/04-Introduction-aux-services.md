@@ -179,7 +179,10 @@ Ce guide fournit une introduction pratique à la gestion des services dans Kuber
 
 - **Les services rendent l'application frontale accessible aux utilisateurs finaux, facilitent la communication entre les composants backend et frontend, et permettent la connexion à une source de données externe.**
 
+![image](https://github.com/hrhouma/beginingKubernetes-part2/assets/10111526/959df9b2-5064-49db-b27a-b92ae8591b2e)
+
 - Ainsi, les services permettent un couplage lâche entre les microservices de notre application.
+
 
 ### Utilisation des Services
 
@@ -198,6 +201,10 @@ Ce guide fournit une introduction pratique à la gestion des services dans Kuber
 - Le nœud Kubernetes a une adresse IP, par exemple 192.168.1.2. Mon ordinateur portable est sur le même réseau avec l'adresse IP 192.168.1.10. Le réseau interne des pods est dans la plage 10.240.0.0, et le pod a une adresse IP 10.240.0.2.
 
 - Il est clair que je ne peux pas pinger ou accéder directement au pod à l'adresse 10.240.0.2 car il se trouve sur un réseau séparé.
+![image](https://github.com/hrhouma/beginingKubernetes-part2/assets/10111526/0af95945-6f87-435c-9fad-3cec7288a35c)
+
+## Solution: 
+![image](https://github.com/hrhouma/beginingKubernetes-part2/assets/10111526/65cce007-a223-4a66-a2e6-01389aea3b50)
 
 #### Options pour Voir la Page Web
 
@@ -248,6 +255,10 @@ Le service Kubernetes est un objet, tout comme les pods, les réplicasets ou les
 - Il manque encore une chose : connecter le service au pod. Nous utilisons des labels et des sélecteurs pour cela. Nous ajoutons les labels du pod dans la section selector du fichier de définition du service.
 
 - Une fois cela fait, nous créons le service avec la commande `kubectl create` et vérifions avec `kubectl get services`.
+
+![image](https://github.com/hrhouma/beginingKubernetes-part2/assets/10111526/bf3a4624-f086-4af3-b289-e4af1841f5a9)
+![image](https://github.com/hrhouma/beginingKubernetes-part2/assets/10111526/127521c5-20fd-4d27-bfbe-d4ae97b7e585)
+![image](https://github.com/hrhouma/beginingKubernetes-part2/assets/10111526/57c0cadc-28c0-467b-98e4-65b77d4d9ca0)
 
 ### Accès au Service
 
