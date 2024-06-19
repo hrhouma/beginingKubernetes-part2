@@ -165,6 +165,25 @@ Ce guide fournit une introduction pratique à la gestion des services dans Kuber
 
 # Annexe : 
 
+![image](https://github.com/hrhouma/beginingKubernetes-part2/assets/10111526/959df9b2-5064-49db-b27a-b92ae8591b2e)
+![image](https://github.com/hrhouma/beginingKubernetes-part2/assets/10111526/0af95945-6f87-435c-9fad-3cec7288a35c)
+![image](https://github.com/hrhouma/beginingKubernetes-part2/assets/10111526/65cce007-a223-4a66-a2e6-01389aea3b50)
+![image](https://github.com/hrhouma/beginingKubernetes-part2/assets/10111526/bf3a4624-f086-4af3-b289-e4af1841f5a9)
+![image](https://github.com/hrhouma/beginingKubernetes-part2/assets/10111526/127521c5-20fd-4d27-bfbe-d4ae97b7e585)
+![image](https://github.com/hrhouma/beginingKubernetes-part2/assets/10111526/57c0cadc-28c0-467b-98e4-65b77d4d9ca0)
+![image](https://github.com/hrhouma/beginingKubernetes-part2/assets/10111526/c74ac877-d536-4eeb-b7ab-c52e50476195)
+![image](https://github.com/hrhouma/beginingKubernetes-part2/assets/10111526/23c3e6f6-a79e-487c-abb5-baa8b81dd7a3)
+![image](https://github.com/hrhouma/beginingKubernetes-part2/assets/10111526/531ddaca-a64f-4c77-bc57-74df11038e8b)
+![image](https://github.com/hrhouma/beginingKubernetes-part2/assets/10111526/bcefc328-4e96-4169-829c-9b197a9c98ca)
+![image](https://github.com/hrhouma/beginingKubernetes-part2/assets/10111526/766e4314-bb5a-48e9-8880-193ec32b48c0)
+![image](https://github.com/hrhouma/beginingKubernetes-part2/assets/10111526/5dee1237-56bd-4393-8e63-58d4ac6b8ee0)
+![image](https://github.com/hrhouma/beginingKubernetes-part2/assets/10111526/be8e2ca9-b589-4769-b342-d686d9d692da)
+
+# Cas de plusieurs noeuds
+![image](https://github.com/hrhouma/beginingKubernetes-part2/assets/10111526/8cfb853a-9991-44b0-9b14-5e36bbc3a30a)
+
+
+
 ### Partie 1 : Introduction aux Services Kubernetes
 
 - Dans cette partie, nous allons discuter des services Kubernetes.
@@ -255,10 +274,6 @@ Le service Kubernetes est un objet, tout comme les pods, les réplicasets ou les
 - Il manque encore une chose : connecter le service au pod. Nous utilisons des labels et des sélecteurs pour cela. Nous ajoutons les labels du pod dans la section selector du fichier de définition du service.
 
 - Une fois cela fait, nous créons le service avec la commande `kubectl create` et vérifions avec `kubectl get services`.
-
-![image](https://github.com/hrhouma/beginingKubernetes-part2/assets/10111526/bf3a4624-f086-4af3-b289-e4af1841f5a9)
-![image](https://github.com/hrhouma/beginingKubernetes-part2/assets/10111526/127521c5-20fd-4d27-bfbe-d4ae97b7e585)
-![image](https://github.com/hrhouma/beginingKubernetes-part2/assets/10111526/57c0cadc-28c0-467b-98e4-65b77d4d9ca0)
 
 ### Accès au Service
 
