@@ -5,6 +5,7 @@
 Les Services dans Kubernetes permettent de communiquer avec un ou plusieurs Pods. Habituellement, les Pods sont éphémères et peuvent changer fréquemment d'adresse IP. Les Services fournissent une adresse IP fixe et un nom DNS pour un ensemble de Pods, et chargent également la balance du trafic vers ces Pods.
 
 # Référence très importante:
+
 - https://www.youtube.com/watch?v=5lzUpDtmWgM
   
 # 2 - Prérequis
