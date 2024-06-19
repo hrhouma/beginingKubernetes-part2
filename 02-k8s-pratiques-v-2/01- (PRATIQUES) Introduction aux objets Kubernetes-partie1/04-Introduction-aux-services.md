@@ -19,7 +19,9 @@ Les Services dans Kubernetes permettent de communiquer avec un ou plusieurs Pods
       labels:
         app: nginx
   ```
-- Avoir regardé la vidéo sur les services de type nodePort : ##  https://www.youtube.com/watch?v=5lzUpDtmWgM 
+- Avoir regardé la vidéo sur les services de type nodePort :
+
+##  https://www.youtube.com/watch?v=5lzUpDtmWgM 
 
 # 3 - Étape 1: Création du fichier YAML pour le Service
 
