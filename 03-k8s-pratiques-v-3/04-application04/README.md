@@ -1,1 +1,1 @@
-
+- git clone https://github.com/hrhouma/k8s-service-demo-1/
