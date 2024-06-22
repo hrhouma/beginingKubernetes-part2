@@ -1,34 +1,17 @@
-### Cours 420-AL3-MA Linux 3
-#### Groupe 22615
+# Travail Pratique : Kubernetes
+## Attention : Ce travail comporte deux parties !
 
----
-
-### Travail Pratique : Kubernetes
-#### Attention : Ce travail comporte deux parties !
-
-### Contexte
+# Contexte
 Le but de ce travail pratique est :
 - d'apprendre à déployer des applications conteneurisées sur Kubernetes ;
 - de comprendre les concepts de base de Kubernetes ;
 - d'utiliser Minikube ou k3s pour déployer des applications à partir de fichiers Docker Compose.
 
-Ce travail doit se réaliser à l'aide d'une station Linux serveur et d'un client (Linux ou Windows) avec navigateur (browser).
+## Ce travail doit se réaliser à l'aide d'une station Linux serveur et d'un client (Linux ou Windows) avec navigateur (browser).
 
----
 
-### Haythem REHOUMA
-#### Enseignant
-hrehouma@cmaisonneuve.qc.ca
 
-Formation Continue
-Collège de Maisonneuve
-2030, boul. Pie-IX
-Montréal (Québec)
-H1X 2C8
-
----
-
-### PARTIE 1 (70%)
+# PARTIE 1 (70%)
 
 #### Introduction
 Ce laboratoire pratique vous guidera à travers les concepts de base de Kubernetes en utilisant Minikube ou k3s. Vous apprendrez à déployer des applications conteneurisées en utilisant des fichiers Docker Compose et à les exécuter sur un cluster Kubernetes.
@@ -211,7 +194,7 @@ minikube stop
 minikube delete
 ```
 
-### PARTIE 2 (30%)
+# PARTIE 2 (30%)
 
 #### Objectif de la partie 2 :
 L'objectif de la partie 2 est de vous familiariser avec la création de déploiements et de services sur Kubernetes en utilisant des fichiers YAML. Vous allez configurer deux services avec une relation de dépendance.
