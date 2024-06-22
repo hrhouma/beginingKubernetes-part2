@@ -1,6 +1,4 @@
-# LES SERVICES
-
-# Tutoriel Kubernetes: Introduction aux Services
+# Les Services en détail partie02
 
 # 1 - Introduction
 
@@ -283,7 +281,7 @@ Le service Kubernetes est un objet, tout comme les pods, les réplicasets ou les
 
 - Pour résumer, que ce soit un pod unique, plusieurs pods sur un même nœud, ou plusieurs pods sur plusieurs nœuds, le service est créé de la même manière sans étapes supplémentaires.
 
-- C'est tout pour cette leçon. Passez à la démonstration, et je vous retrouverai dans la prochaine leçon.
+
 
 # Partie 2 : Démonstration des Services Kubernetes
 
@@ -397,45 +395,44 @@ Pour lier le service à un ensemble de pods, nous utilisons un sélecteur. Nous 
 
 ### Création et Vérification du Service
 
-Nous pouvons maintenant créer le service en utilisant la commande `kubectl create` et vérifier son statut avec la commande `kubectl get services`.
+- Nous pouvons maintenant créer le service en utilisant la commande `kubectl create` et vérifier son statut avec la commande `kubectl get services`.
+- Le service peut être accessible par d'autres pods en utilisant le ClusterIP ou le nom du service.
 
-Le service peut être accessible par d'autres pods en utilisant le ClusterIP ou le nom du service.
 
-Voilà pour cette leçon. Je vous retrouverai dans la prochaine leçon.
 
 ### Partie 4 : LoadBalancer
 
-Nous allons maintenant examiner un autre type de service connu sous le nom de LoadBalancer.
+- Nous allons maintenant examiner un autre type de service connu sous le nom de LoadBalancer.
 
-Nous avons déjà vu le service NodePort qui nous permet de rendre une application externe accessible sur un port des nœuds de travail. Concentrons-nous maintenant sur les applications frontend, comme l'application de vote et l'application de résultats.
+- Nous avons déjà vu le service NodePort qui nous permet de rendre une application externe accessible sur un port des nœuds de travail. Concentrons-nous maintenant sur les applications frontend, comme l'application de vote et l'application de résultats.
 
-Ces pods sont hébergés sur les nœuds de travail dans un cluster. Supposons que nous ayons un cluster de quatre nœuds et que nous voulions rendre les applications accessibles aux utilisateurs externes en créant des services de type NodePort.
+- Ces pods sont hébergés sur les nœuds de travail dans un cluster. Supposons que nous ayons un cluster de quatre nœuds et que nous voulions rendre les applications accessibles aux utilisateurs externes en créant des services de type NodePort.
 
 ### Accessibilité avec NodePort
 
-Les services de type NodePort permettent de recevoir le trafic sur les ports des nœuds et de le rediriger vers les pods respectifs. Mais quelle URL donneriez-vous à vos utilisateurs pour accéder aux applications ?
+- Les services de type NodePort permettent de recevoir le trafic sur les ports des nœuds et de le rediriger vers les pods respectifs. Mais quelle URL donneriez-vous à vos utilisateurs pour accéder aux applications ?
 
-Vous pourriez accéder à n'importe laquelle de ces deux applications en utilisant l'IP de n'importe lequel des nœuds et le port élevé sur lequel le service est exposé. Cela signifie que vous auriez quatre combinaisons d'IP et de port pour l'application de vote et quatre combinaisons d'IP et de port pour l'application de résultats.
+- Vous pourriez accéder à n'importe laquelle de ces deux applications en utilisant l'IP de n'importe lequel des nœuds et le port élevé sur lequel le service est exposé. Cela signifie que vous auriez quatre combinaisons d'IP et de port pour l'application de vote et quatre combinaisons d'IP et de port pour l'application de résultats.
 
-Même si vos pods sont uniquement hébergés sur deux des nœuds, ils seront toujours accessibles via les IP de tous les nœuds du cluster. Par exemple, si les pods de l'application de vote ne sont déployés que sur les nœuds avec les IP 70 et 71, ils seront toujours accessibles sur les ports de tous les nœuds du cluster.
+- Même si vos pods sont uniquement hébergés sur deux des nœuds, ils seront toujours accessibles via les IP de tous les nœuds du cluster. Par exemple, si les pods de l'application de vote ne sont déployés que sur les nœuds avec les IP 70 et 71, ils seront toujours accessibles sur les ports de tous les nœuds du cluster.
 
 ### Besoin d'une URL Unique
 
-Pourtant, ce n'est pas ce que les utilisateurs finaux souhaitent. Ils ont besoin d'une URL unique, comme par exemple `voting.abc.com` ou `result.abc.com`, pour accéder à l'application. Comment y parvenir ?
-
-Une façon d'y parvenir est de créer une nouvelle machine virtuelle pour le load balancer, d'y installer et de configurer un load balancer approprié comme HAProxy ou NGINX, puis de configurer le load balancer pour rediriger le trafic vers les nœuds sous-jacents.
+- Pourtant, ce n'est pas ce que les utilisateurs finaux souhaitent. Ils ont besoin d'une URL unique, comme par exemple `voting.abc.com` ou `result.abc.com`, pour accéder à l'application. Comment y parvenir ?
+  
+- Une façon d'y parvenir est de créer une nouvelle machine virtuelle pour le load balancer, d'y installer et de configurer un load balancer approprié comme HAProxy ou NGINX, puis de configurer le load balancer pour rediriger le trafic vers les nœuds sous-jacents.
 
 ### Utilisation des Load Balancers Natifs des Clouds
 
-Cependant, configurer tout cela et ensuite maintenir et gérer le load balancer externe peut être une tâche fastidieuse. Si nous étions sur une plateforme cloud supportée comme Google Cloud, AWS ou Azure, nous pourrions tirer parti du load balancer natif de cette plateforme cloud.
+- Cependant, configurer tout cela et ensuite maintenir et gérer le load balancer externe peut être une tâche fastidieuse. Si nous étions sur une plateforme cloud supportée comme Google Cloud, AWS ou Azure, nous pourrions tirer parti du load balancer natif de cette plateforme cloud.
 
-Kubernetes prend en charge l'intégration avec les load balancers natifs de certains fournisseurs de cloud et peut configurer cela pour nous. Il suffit de définir le type de service pour les services frontend en tant que LoadBalancer au lieu de NodePort.
+- Kubernetes prend en charge l'intégration avec les load balancers natifs de certains fournisseurs de cloud et peut configurer cela pour nous. Il suffit de définir le type de service pour les services frontend en tant que LoadBalancer au lieu de NodePort.
 
 ### Environnements Supportés
 
-Il est important de noter que cela ne fonctionne que sur des plateformes cloud supportées. GCP, AWS et Azure sont définitivement supportés. Si vous définissez le type de service en tant que LoadBalancer dans un environnement non supporté comme VirtualBox ou d'autres environnements, cela aura le même effet que de le définir en tant que NodePort, où les services sont exposés sur un port élevé sur les nœuds. Il n'y aura simplement pas de configuration de load balancer externe.
+- Il est important de noter que cela ne fonctionne que sur des plateformes cloud supportées. GCP, AWS et Azure sont définitivement supportés. Si vous définissez le type de service en tant que LoadBalancer dans un environnement non supporté comme VirtualBox ou d'autres environnements, cela aura le même effet que de le définir en tant que NodePort, où les services sont exposés sur un port élevé sur les nœuds. Il n'y aura simplement pas de configuration de load balancer externe.
 
-Lorsque nous passerons en revue les démonstrations de déploiement de notre application sur des plateformes cloud, nous verrons cela en action.
+- Lorsque nous passerons en revue les démonstrations de déploiement de notre application sur des plateformes cloud, nous verrons cela en action.
 
-C'est tout pour le moment. Je vous retrouve dans la prochaine démonstration.
+
 
