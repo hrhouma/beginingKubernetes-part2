@@ -343,12 +343,124 @@ spec:
 ### Équipes
 - Deux (minimum) à trois (maximum) étudiants par équipe
 
-### Date de remise
-- Dimanche, 09 juin 2024 (à la fin de la journée)
-
 ### Pondération
 - 25% de la note finale
 
 ---
 
 Ce travail pratique vous permettra de mieux comprendre et maîtriser l'utilisation de Kubernetes pour déployer et gérer des applications conteneurisées. Bonne chance !
+
+# Grille d'évaluation :
+
+### Grille d'Évaluation pour le Travail Pratique Kubernetes
+
+| Critères d'Évaluation                            | Description                                                                                                                                                 | Points  |
+|--------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|
+| **Installation et Configuration**                |                                                                                                                                                             | **/10** |
+| - Installation de Minikube/k3s                   | Minikube ou k3s est correctement installé et démarré.                                                                                                       | 5       |
+| - Configuration IP du serveur                    | Les informations réseau (adresse IP, masque de sous-réseau, passerelle, DNS, adresse MAC) sont correctement identifiées et documentées.                      | 5       |
+| **Déploiement d'Applications Conteneurisées**    |                                                                                                                                                             | **/20** |
+| - Conversion de Docker Compose à Kubernetes      | Le fichier `docker-compose.yaml` est correctement converti en fichiers YAML Kubernetes (utilisation de `kompose` ou autre méthode).                         | 10      |
+| - Déploiement des Applications                   | Les fichiers YAML sont appliqués correctement et les pods sont en cours d'exécution.                                                                         | 10      |
+| **Exposure et Accès aux Services**               |                                                                                                                                                             | **/15** |
+| - Utilisation de ClusterIP, NodePort ou Ingress  | Les services sont exposés correctement en utilisant ClusterIP, NodePort ou Ingress.                                                                          | 5       |
+| - Accès à l'application                          | L'application est accessible via l'URL ou l'adresse IP fournie, avec capture d'écran à l'appui.                                                              | 5       |
+| - Documentation des étapes                       | Les étapes pour exposer et accéder à l'application sont bien documentées.                                                                                    | 5       |
+| **Namespaces et Organisation des Ressources**    |                                                                                                                                                             | **/10** |
+| - Création et utilisation de Namespaces          | Les namespaces sont créés et utilisés pour organiser les ressources.                                                                                         | 5       |
+| - Vérification des namespaces                    | Les commandes pour vérifier les namespaces et les ressources dans les namespaces sont utilisées et documentées.                                              | 5       |
+| **Scaling et Gestion des Déploiements**          |                                                                                                                                                             | **/15** |
+| - Scaling des déploiements                       | Le scaling des déploiements est effectué correctement (augmentation ou réduction du nombre de réplicas).                                                      | 10      |
+| - Documentation du scaling                       | Les étapes de scaling sont bien documentées avec des captures d'écran.                                                                                       | 5       |
+| **Containerisation et Hébergement**              |                                                                                                                                                             | **/15** |
+| - Création d'une image Docker                    | Une image Docker est créée correctement à partir d'un Dockerfile.                                                                                            | 5       |
+| - Hébergement sur Docker Hub                     | L'image est poussée sur Docker Hub et est accessible publiquement.                                                                                           | 5       |
+| - Utilisation de l'image dans Kubernetes         | L'image Docker est utilisée pour créer des pods dans Kubernetes.                                                                                             | 5       |
+| **Nettoyage et Suppression des Ressources**      |                                                                                                                                                             | **/5**  |
+| - Suppression des déploiements et services       | Les déploiements, services et autres ressources sont correctement supprimés après usage.                                                                     | 5       |
+| **Documentation Générale**                       |                                                                                                                                                             | **/10** |
+| - Clarté et Précision                            | La documentation est claire, précise et facile à suivre.                                                                                                     | 5       |
+| - Capture d'écran et exemples                    | Les captures d'écran et les exemples sont pertinents et illustrent correctement les étapes et résultats attendus.                                             | 5       |
+| **Partie 2 : Configuration Avancée**             |                                                                                                                                                             | **/20** |
+| - Déploiements avec dépendances                  | Les déploiements sont correctement configurés avec des relations de dépendance entre les services.                                                            | 10      |
+| - Test et validation des déploiements            | Les déploiements sont testés et validés pour s'assurer que les services dépendent correctement l'un de l'autre et fonctionnent comme prévu.                   | 5       |
+| - Documentation des configurations avancées      | La documentation explique clairement les configurations avancées et les étapes de déploiement avec captures d'écran à l'appui.                                | 5       |
+| **Total**                                        |                                                                                                                                                             | **/120**|
+
+### Remarques :
+- La grille d'évaluation est divisée en plusieurs sections correspondant aux concepts clés couverts dans le laboratoire.
+- Chaque section est subdivisée en critères spécifiques avec des points attribués en fonction de l'accomplissement des tâches et de la qualité de la documentation.
+- Les étudiants doivent fournir des captures d'écran et une documentation détaillée pour chaque étape afin de valider leur travail.
+- Les critères de la partie 2 sont centrés sur la configuration avancée et les relations de dépendance entre les services.
+
+- # Anenxe - Concepts appris
+
+### Concepts Couverts dans ce Laboratoire
+
+Ce laboratoire couvre une variété de concepts essentiels pour comprendre et utiliser Kubernetes. Voici les principaux concepts abordés :
+
+#### Partie 1 : Introduction à Kubernetes avec Minikube/k3s
+
+1. **Installation de Minikube/k3s :**
+   - Mise en place d'un environnement Kubernetes local en utilisant Minikube ou k3s.
+   
+2. **Configuration IP du serveur :**
+   - Identification et configuration des éléments réseau de base (adresse IP, masque de sous-réseau, passerelle par défaut, serveur DNS, adresse MAC).
+
+3. **Déploiement d'Applications Conteneurisées :**
+   - Conversion de fichiers `docker-compose.yaml` en fichiers de déploiement Kubernetes.
+   - Utilisation de `kompose` pour automatiser cette conversion.
+   - Création et application de fichiers YAML pour déployer des applications sur Kubernetes.
+
+4. **Vérification du Déploiement :**
+   - Utilisation de commandes Kubernetes pour vérifier l'état des pods et des services (`kubectl get pods`, `kubectl get services`).
+   - Accès aux applications déployées via différents types de services (ClusterIP, NodePort, Ingress).
+
+5. **Exposure des Services :**
+   - Comprendre et utiliser les différents types de services Kubernetes pour exposer les applications :
+     - **ClusterIP :** Pour un accès interne au cluster.
+     - **NodePort :** Pour un accès externe via un port spécifique sur chaque nœud.
+     - **Ingress :** Pour un accès externe via des règles d'URL et des hôtes.
+
+6. **Namespaces :**
+   - Utilisation des namespaces pour organiser et isoler les ressources au sein du cluster.
+
+7. **Scaling des Déploiements :**
+   - Mise à l'échelle des déploiements pour gérer des charges de travail variables (`kubectl scale deployment`).
+
+8. **Suppression des Déploiements et des Services :**
+   - Commandes pour supprimer les ressources Kubernetes (`kubectl delete`).
+
+9. **Containerisation et Hébergement sur Docker Hub :**
+   - Création d'une image Docker à partir d'un `Dockerfile`.
+   - Hébergement de l'image sur Docker Hub.
+   - Création et déploiement de pods Kubernetes à partir d'images Docker.
+
+10. **Nettoyage du Cluster :**
+    - Commandes pour arrêter et supprimer les clusters Minikube (`minikube stop`, `minikube delete`).
+
+#### Partie 2 : Configuration Avancée avec Kubernetes
+
+1. **Création de Déploiements avec des Relations de Dépendance :**
+   - Création de fichiers de déploiement YAML pour des applications interconnectées.
+   - Définition des dépendances entre les services (par exemple, WordPress dépendant de MySQL).
+
+2. **Test et Validation des Déploiements :**
+   - Vérification que les services dépendent correctement l'un de l'autre et fonctionnent comme prévu.
+
+3. **Documentation des Configurations :**
+   - Écriture de documents expliquant les configurations et les étapes de déploiement, y compris des captures d'écran pour montrer les résultats.
+
+### Concepts de Kubernetes Abordés
+
+- **Pods :** L'unité de base de déploiement dans Kubernetes, représentant une ou plusieurs conteneurs déployés ensemble sur un même nœud.
+- **Services :** Ressources Kubernetes qui exposent un ensemble de pods en tant que service réseau.
+- **Deployments :** Ressources de gestion de la mise à l'échelle et de la mise à jour des applications conteneurisées.
+- **Scaling :** Mise à l'échelle horizontale des applications pour répondre à la demande.
+- **Namespaces :** Isolation et organisation des ressources dans un cluster Kubernetes.
+- **Ingress :** Gestion des accès externes aux services au sein du cluster.
+- **Persistent Volumes et Claims :** Gestion du stockage persistant pour les pods.
+- **Docker :** Containerisation des applications et hébergement d'images sur Docker Hub.
+- **Networking :** Concepts de mise en réseau et configuration des services pour l'accès interne et externe.
+
+Ces concepts et pratiques vous permettent de développer une compréhension approfondie de la gestion des applications conteneurisées sur Kubernetes et de leur cycle de vie, depuis la containerisation jusqu'au déploiement, à la mise à l'échelle et à la gestion.
