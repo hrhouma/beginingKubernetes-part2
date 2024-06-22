@@ -1,6 +1,7 @@
 # Cours : Kubernetes et Orchestration de Conteneurs
 - https://github.com/hrhouma/beginingKubernetes-part123/tree/main
 - https://github.com/hrhouma/kubernetes2/
+- https://github.com/hrhouma/kubernetes1/
 ## Introduction
 
 Ce cours est conçu pour offrir une compréhension complète de l'orchestration de conteneurs avec Docker et Kubernetes. Il couvre à la fois les concepts théoriques et les exercices pratiques pour assurer une compréhension approfondie et pratique de la gestion des applications conteneurisées.
