@@ -1,1 +1,2 @@
 - https://github.com/gbhure/docker-demo/tree/master/service-demo
+- https://github.com/hrhouma/k8s-service-demo-1/
