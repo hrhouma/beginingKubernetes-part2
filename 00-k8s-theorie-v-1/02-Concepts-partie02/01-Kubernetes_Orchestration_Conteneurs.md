@@ -1,5 +1,5 @@
 # Cours : Kubernetes et Orchestration de Conteneurs
-- https://github.com/hrhouma/beginingKubernetes-part123/tree/main
+- https://github.com/hrhouma/beginingKubernetes-part123/
 - https://github.com/hrhouma/kubernetes2/
 - https://github.com/hrhouma/kubernetes1/
 ## Introduction
