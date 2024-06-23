@@ -1,9 +1,4 @@
-
-Je vais maintenant créer un plan de contenu avec des liens pour chaque section, afin de faciliter la navigation dans le document.
-
----
-
-## Plan de Contenu
+# Plan de Contenu
 
 1. [Introduction aux Services Kubernetes](#introduction-aux-services-kubernetes)
 2. [Pourquoi avons-nous besoin de services dans Kubernetes ?](#pourquoi-avons-nous-besoin-de-services-dans-kubernetes)
