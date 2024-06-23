@@ -333,7 +333,7 @@ Ces exercices vous ont permis de pratiquer le contrôle précis du placement des
    - `value` : La valeur du taint que le pod tolère (`blue` ici).
    - `effect` : L'effet du taint (`NoSchedule` ici).
 
-### Exercice 3 : Analyse et Correction
+### Exercice 3: Analyse et Correction
 
 1. **Analyse de Configuration :**  
    Si un pod ne se lance pas comme prévu sur un nœud avec un taint, procédez comme suit :
@@ -351,7 +351,7 @@ Ces exercices vous ont permis de pratiquer le contrôle précis du placement des
        effect: "NoSchedule"
    ```
 
-### Exercice 4 : Pratique de Node Selector et Node Affinity
+### Exercice 4: Pratique de Node Selector et Node Affinity
 
 #### Partie 1: Utilisation de Node Selector
 
