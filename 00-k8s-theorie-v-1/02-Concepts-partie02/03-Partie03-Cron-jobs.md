@@ -1,5 +1,3 @@
-Pour inclure une table des matières cliquable et organiser le contenu conformément à votre demande, je vais créer un document structuré avec des sections clairement définies. Je vais également inclure les exemples du fichier Word "8-théorie 8 - (OK) cronJobsKubernutesAZURE_KIND.docx" pour que le tout soit complet et cohérent.
-
 ### Table des Matières
 
 1. [Introduction aux CronJobs](#introduction-aux-cronjobs)
