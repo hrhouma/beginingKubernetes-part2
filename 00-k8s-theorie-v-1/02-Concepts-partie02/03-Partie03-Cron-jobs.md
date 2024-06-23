@@ -13,7 +13,7 @@
 
 ---
 
-## 1. Introduction aux CronJobs
+## Introduction aux CronJobs
 
 Les CronJobs dans Kubernetes sont des ressources qui permettent de planifier des tâches répétitives à des intervalles réguliers. Ils sont particulièrement utiles pour des tâches comme les sauvegardes de bases de données, les envois de rapports périodiques, ou toute autre tâche nécessitant une exécution programmée.
 
