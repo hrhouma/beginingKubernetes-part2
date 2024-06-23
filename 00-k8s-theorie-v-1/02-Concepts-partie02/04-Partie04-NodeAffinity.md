@@ -157,7 +157,7 @@ Les CronJobs sont un outil puissant dans Kubernetes pour automatiser des tâches
 
 ---
 
-## Exercice_1 : Compréhension des Concepts
+## Exercice 1 : Compréhension des Concepts
 
 1. **Qu'est-ce qu'un Taint ?**  
    Expliquez ce que signifie "tainter" un nœud dans Kubernetes. Quels types d'effets les taints peuvent-ils avoir sur la planification des pods ?
