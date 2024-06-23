@@ -299,7 +299,7 @@ Ces exercices vous ont permis de pratiquer le contrôle précis du placement des
 
 ## Corrections des Exercices
 
-### Exercice_1 : Compréhension des Concepts
+### Exercice 1: Compréhension des Concepts
 
 1. **Qu'est-ce qu'un Taint ?**  
    Un **taint** est une propriété appliquée à un nœud pour empêcher certains pods d'y être planifiés. Les effets possibles des taints sont :
@@ -310,7 +310,7 @@ Ces exercices vous ont permis de pratiquer le contrôle précis du placement des
 2. **Qu'est-ce qu'une Tolérance ?**  
    Une **tolérance** permet à un pod de tolérer un taint spécifique appliqué à un nœud, ce qui permet au pod d'être planifié sur ce nœud. Les tolérances sont définies dans la spécification du pod sous la section `tolerations`.
 
-### Exercice 2 : Application Pratique
+### Exercice 2: Application Pratique
 
 1. **Identification des Taints sur un Nœud :**  
    La commande `kubectl describe node demo-worker | grep Taint` affiche les taints appliqués au nœud `demo-worker`. Par exemple, une sortie possible pourrait être :
