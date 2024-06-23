@@ -337,7 +337,7 @@ Ce guide vous a fourni une compréhension détaillée des services Kubernetes et
 
 --------------
 # *****************************
-# ANNEXE : NODEPORT
+# ANNEXE : PRATIQUE NODEPORT
 # *****************************
 
 # Tutoriel de Configuration d'un Cluster Kubernetes et Déploiement d'une Application
