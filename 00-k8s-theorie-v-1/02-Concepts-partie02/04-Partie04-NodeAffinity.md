@@ -14,6 +14,9 @@
 8. [Exercice 2 : Application Pratique](#exercice-2-application-pratique)
 9. [Exercice 3 : Analyse et Correction](#exercice-3-analyse-et-correction)
 10. [Exercice 4 : Pratique de Node Selector et Node Affinity](#exercice-4-pratique-de-node-selector-et-node-affinity)
+    - [Partie 1: Utilisation de Node Selector](#partie-1-utilisation-de-node-selector)
+    - [Partie 2: Pratique de Node Affinity](#partie-2-pratique-de-node-affinity)
+    - [Nettoyage](#nettoyage)
 
 ---
 
@@ -199,12 +202,14 @@ Les CronJobs sont un outil puissant dans Kubernetes pour automatiser des tâches
 ### Contexte
 Kubernetes offre plusieurs mécanismes pour influencer où les pods sont déployés dans le cluster, parmi lesquels le Node Selector simple et la Node Affinity plus complexe et flexible.
 
-#### Partie 1: Utilisation de Node Selector
+### Partie 1: Utilisation de Node Selector
 
 **Scénario:** Vous avez un cluster de 20 nœuds sur AWS, et vous voulez déployer un pod nginx uniquement sur les nœuds ayant l'étiquette `color=red`.
 
 1. **Étiqueter un Nœud:**
    - Choisissez un nœud (par exemple, `demo-worker2`) et appliquez-lui une étiquette `color=red`.
+
+
      ```bash
      kubectl label nodes demo-worker2 color=red
      ```
@@ -212,9 +217,7 @@ Kubernetes offre plusieurs mécanismes pour influencer où les pods sont déploy
 2. **Créer le Manifeste du Pod:**
    - Ouvrez un éditeur de texte et saisissez le YAML suivant pour un pod nginx utilisant un Node Selector.
      ```yaml
-     apiVersion:
-
- v1
+     apiVersion: v1
      kind: Pod
      metadata:
        name: nginx
@@ -234,7 +237,7 @@ Kubernetes offre plusieurs mécanismes pour influencer où les pods sont déploy
      ```
    - Vérifiez que le pod est bien déployé sur le nœud avec `color=red`.
 
-#### Partie 2: Pratique de Node Affinity
+### Partie 2: Pratique de Node Affinity
 
 **Scénario:** Vous voulez cette fois déployer un pod nginx sur un nœud qui est à la fois dans l'environnement AWS (`env=aws`) et qui possède un SSD (`hdd=ssd`).
 
@@ -291,6 +294,149 @@ Kubernetes offre plusieurs mécanismes pour influencer où les pods sont déploy
 ### Conclusion
 
 Ces exercices vous ont permis de pratiquer le contrôle précis du placement des pods dans un cluster Kubernetes, utilisant à la fois la méthode simple du Node Selector et la méthode plus flexible de la Node Affinity. Ces compétences sont essentielles pour optimiser l'utilisation des ressources et respecter les contraintes opérationnelles spécifiques dans un environnement Kubernetes.
+
+---
+
+## Corrections des Exercices
+
+### Exercice 1 : Compréhension des Concepts
+
+1. **Qu'est-ce qu'un Taint ?**  
+   Un **taint** est une propriété appliquée à un nœud pour empêcher certains pods d'y être planifiés. Les effets possibles des taints sont :
+   - `NoSchedule` : Empêche la planification des pods qui ne tolèrent pas le taint.
+   - `PreferNoSchedule` : Évite autant que possible la planification des pods qui ne tolèrent pas le taint, sans garantie absolue.
+   - `NoExecute` : Expulse les pods déjà en cours d'exécution qui ne tolèrent pas le taint et empêche la planification de nouveaux pods qui ne tolèrent pas le taint.
+
+2. **Qu'est-ce qu'une Tolérance ?**  
+   Une **tolérance** permet à un pod de tolérer un taint spécifique appliqué à un nœud, ce qui permet au pod d'être planifié sur ce nœud. Les tolérances sont définies dans la spécification du pod sous la section `tolerations`.
+
+### Exercice 2 : Application Pratique
+
+1. **Identification des Taints sur un Nœud :**  
+   La commande `kubectl describe node demo-worker | grep Taint` affiche les taints appliqués au nœud `demo-worker`. Par exemple, une sortie possible pourrait être :
+   ```plaintext
+   Taints: lock=blue:NoSchedule
+   ```
+   Cela indique que seuls les pods tolérant le taint `lock=blue:NoSchedule` peuvent être planifiés sur ce nœud.
+
+2. **Création d'un Pod avec Tolérance :**  
+   En vous basant sur le fichier `pod-tolerations.yaml`, le pod `nginx` est configuré pour tolérer le taint `lock=blue:NoSchedule` comme suit :
+   ```yaml
+   tolerations:
+     - key: "lock"
+       operator: "Equal"
+       value: "blue"
+       effect: "NoSchedule"
+   ```
+   - `key` : Identifie le taint que le pod peut tolérer.
+   - `operator` : Spécifie l'opérateur de comparaison (`Equal` ici).
+   - `value` : La valeur du taint que le pod tolère (`blue` ici).
+   - `effect` : L'effet du taint (`NoSchedule` ici).
+
+### Exercice 3 : Analyse et Correction
+
+1. **Analyse de Configuration :**  
+   Si un pod ne se lance pas comme prévu sur un nœud avec un taint, procédez comme suit :
+   - Utilisez `kubectl describe pod <nom-du-pod>` pour vérifier les messages d'erreur relatifs aux taints et tolérances.
+   - Vérifiez les taints sur le nœud avec `kubectl describe node <nom-du-nœud> | grep Taint`.
+   - Assurez-vous que le pod a les tolérances nécessaires pour les taints du nœud.
+
+2. **Correction d'une Tolérance :**  
+   Pour corriger la tolérance suivante pour qu'elle corresponde au taint `lock=blue:NoSchedule`, remplacez `yellow` par `blue` :
+   ```yaml
+   tolerations:
+     - key: "lock"
+       operator: "Equal"
+       value: "blue"  # Correction de la valeur pour qu'elle corresponde au taint du nœud
+       effect: "NoSchedule"
+   ```
+
+### Exercice 4 : Pratique de Node Selector et Node Affinity
+
+#### Partie 1: Utilisation de Node Selector
+
+1. **Étiqueter un Nœud:**
+   - Appliquez l'étiquette `color=red` au nœud `demo-worker2` :
+     ```bash
+     kubectl label nodes demo-worker2 color=red
+     ```
+
+2. **Créer le Manifeste du Pod:**
+   - Le manifeste YAML du pod `nginx` utilisant un Node Selector est le suivant :
+     ```yaml
+     apiVersion: v1
+     kind: Pod
+     metadata:
+       name: nginx
+     spec:
+       nodeSelector:
+         color: red
+       containers:
+       - name: nginx
+         image: nginx
+     ```
+   - Enregistrez le fichier sous le nom `pod-nodeselector.yaml`.
+
+3. **Déployer le Pod:**
+   - Appliquez le manifeste avec la commande :
+     ```bash
+     kubectl apply -f pod-nodeselector.yaml
+     ```
+   - Vérifiez que le pod est bien déployé sur le nœud avec `color=red`.
+
+#### Partie 2: Pratique de Node Affinity
+
+1. **Étiqueter les Nœuds:**
+   - Appliquez les étiquettes nécessaires aux nœuds :
+     ```bash
+     kubectl label nodes <nom-du-nœud> env=aws hdd=ssd
+     ```
+
+2. **Créer le Manifeste du Pod avec Node Affinity:**
+   - Le manifeste YAML du pod `nginx-affinity` avec les conditions d'affinité est le suivant :
+     ```yaml
+     apiVersion: v1
+     kind: Pod
+     metadata:
+       name: nginx-affinity
+     spec:
+       affinity:
+         nodeAffinity:
+           requiredDuringSchedulingIgnoredDuringExecution:
+             nodeSelectorTerms:
+             - matchExpressions:
+               - key: env
+                 operator: In
+                 values:
+                   - aws
+               - key: hdd
+                 operator: In
+                 values:
+                   - ssd
+       containers:
+       - name: nginx
+         image: nginx
+     ```
+   - Enregistrez le fichier sous `pod-nodeaffinity.yaml`.
+
+3. **Déployer le Pod avec Node Affinity:**
+   - Appliquez ce manifeste pour déployer le pod.
+     ```bash
+     kubectl apply -f pod-nodeaffinity.yaml
+     ```
+   - Vérifiez le placement du pod pour confirmer qu'il est déployé sur un nœud satisfaisant les deux conditions (`env=aws` et `hdd=ssd`).
+
+### Nettoyage
+
+- **Supprimer les Pods et les Étiquettes des Nœ
+
+uds:**
+  Pour garder votre cluster propre, pensez à supprimer les pods créés et à retirer les étiquettes si nécessaire.
+  ```bash
+  kubectl delete pod nginx
+  kubectl delete pod nginx-affinity
+  kubectl label nodes demo-worker2 color- env- hdd-
+  ```
 
 ---
 
