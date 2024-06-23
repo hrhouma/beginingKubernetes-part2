@@ -299,7 +299,7 @@ Ces exercices vous ont permis de pratiquer le contrôle précis du placement des
 
 ## Corrections des Exercices
 
-### Exercice 1 : Compréhension des Concepts
+### Exercice_1 : Compréhension des Concepts
 
 1. **Qu'est-ce qu'un Taint ?**  
    Un **taint** est une propriété appliquée à un nœud pour empêcher certains pods d'y être planifiés. Les effets possibles des taints sont :
