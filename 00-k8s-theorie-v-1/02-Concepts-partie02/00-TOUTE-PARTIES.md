@@ -234,9 +234,7 @@ Kubernetes (K8s) est un système d'orchestration de conteneurs open-source qui a
 ## 7. Comprendre les Pods
 
 ### Objectifs :
-- Appréhender le
-
- concept de Pod dans Kubernetes
+- Appréhender le concept de Pod dans Kubernetes
 - Déployer et gérer des Pods
 
 ### Qu'est-ce qu'un Pod ?
