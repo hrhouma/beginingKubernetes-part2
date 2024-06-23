@@ -19,7 +19,7 @@ Les CronJobs dans Kubernetes sont des ressources qui permettent de planifier des
 
 ---
 
-## 2. Syntaxe et Planification
+## Syntaxe et Planification
 
 La syntaxe de planification des CronJobs suit le format des tâches cron traditionnelles que l'on trouve dans les systèmes Unix. La planification est définie en utilisant cinq champs pour les minutes, heures, jours du mois, mois, et jours de la semaine.
 
@@ -32,7 +32,7 @@ Pour aider à la création de ces expressions, l'outil [Crontab.guru](https://cr
 
 ---
 
-## 3. Création d'un CronJob
+## Création d'un CronJob
 
 Voici un exemple de fichier YAML pour un CronJob qui exécute un script simple toutes les minutes :
 
@@ -65,7 +65,7 @@ kubectl apply -f example-cronjob.yaml
 
 ---
 
-## 4. Observation et Gestion des CronJobs
+## Observation et Gestion des CronJobs
 
 Pour observer les CronJobs et les jobs qu'ils créent, utilisez les commandes suivantes :
 
@@ -88,7 +88,7 @@ En cas de problème, les stratégies de redémarrage et la gestion des échecs d
 
 ---
 
-## 5. Pratique : Exemple de CronJob
+## Pratique : Exemple de CronJob
 
 ### Étape 1 : Préparation de l'environnement
 
@@ -144,7 +144,7 @@ kubectl apply -f db-backup-cronjob.yaml
 
 ---
 
-## 6. Conclusion
+## Conclusion
 
 Les CronJobs sont un outil puissant dans Kubernetes pour automatiser des tâches répétitives. En suivant les bonnes pratiques et en utilisant les outils disponibles pour planifier et observer ces tâches, vous pouvez assurer que vos opérations récurrentes se déroulent de manière fiable et efficace.
 
