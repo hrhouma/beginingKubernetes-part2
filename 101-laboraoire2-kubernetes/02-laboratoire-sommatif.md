@@ -393,7 +393,7 @@ Ce travail pratique vous permettra de mieux comprendre et maîtriser l'utilisati
 - Les étudiants doivent fournir des captures d'écran et une documentation détaillée pour chaque étape afin de valider leur travail.
 - Les critères de la partie 2 sont centrés sur la configuration avancée et les relations de dépendance entre les services.
 
-- # Anenxe - Concepts appris
+- # ANNEXE - Concepts appris
 
 ### Concepts Couverts dans ce Laboratoire
 
