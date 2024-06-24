@@ -1,7 +1,3 @@
-Voici les informations mises à jour avec les liens visibles pour que vous puissiez les copier et les coller facilement :
-
----
-
 **IMPORTANT - Plan des pratiques pour K8S (PARTIE1)**
 
 **Partie1. Installation de minikube:**  
@@ -30,9 +26,7 @@ https://github.com/hrhouma/beginingKubernetes-part2/blob/main/02-k8s-pratiques-v
 
 **Partie7. Pratique 07 - Application directe de la pratique 06**  
 [Gestion des Déploiements dans Kubernetes](https://github.com/hrhouma/beginingKubernetes-part2/blob/main/02-k8s-pratiques-v-2/01-%20(PRATIQUES)%20Introduction%20aux%20objets%20Kubernetes-partie1/exercices/03-Gestion%20des%20D%C3%A9ploiements%20dans%20Kubernetes.md)  
-https://github.com/hrhouma/beginingKubernetes-part2/blob/main/02-k8s-pratiques-v-2/01-%20(PRATI
-
-QUES)%20Introduction%20aux%20objets%20Kubernetes-partie1/exercices/03-Gestion%20des%20D%C3%A9ploiements%20dans%20Kubernetes.md
+https://github.com/hrhouma/beginingKubernetes-part2/blob/main/02-k8s-pratiques-v-2/01-%20(PRATIQUES)%20Introduction%20aux%20objets%20Kubernetes-partie1/exercices/03-Gestion%20des%20D%C3%A9ploiements%20dans%20Kubernetes.md
 
 **Partie8. Pratique 08 - Gestion des services**  
 [Introduction aux services](https://github.com/hrhouma/beginingKubernetes-part2/blob/main/02-k8s-pratiques-v-2/01-%20(PRATIQUES)%20Introduction%20aux%20objets%20Kubernetes-partie1/04-Introduction-aux-services.md)  
@@ -46,4 +40,3 @@ https://github.com/hrhouma/beginingKubernetes-part2/blob/main/02-k8s-pratiques-v
 [Pratique 10 - Résumé](https://github.com/hrhouma/beginingKubernetes-part2/tree/main/01-k8s-pratiques-v-1/02-pratique2)  
 https://github.com/hrhouma/beginingKubernetes-part2/tree/main/01-k8s-pratiques-v-1/02-pratique2
 
----
