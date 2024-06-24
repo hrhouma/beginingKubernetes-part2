@@ -32,4 +32,3 @@ Ah, pour ajouter des émojis à votre README pour le rendre plus visuel et engag
 # Partie10. Pratique 10 - Résumé des manipulations et des concepts de 1 à 10 
 📈 [Pratique 10 - Résumé](https://github.com/hrhouma/beginingKubernetes-part2/tree/main/01-k8s-pratiques-v-1/02-pratique2)
 
-Ces émojis peuvent aider à mieux visualiser chaque section et à rendre le document plus interactif et facile à naviguer.
