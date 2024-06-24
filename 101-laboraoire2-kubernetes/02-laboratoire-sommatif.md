@@ -464,3 +464,18 @@ Ce laboratoire couvre une variété de concepts essentiels pour comprendre et ut
 - **Networking :** Concepts de mise en réseau et configuration des services pour l'accès interne et externe.
 
 Ces concepts et pratiques vous permettent de développer une compréhension approfondie de la gestion des applications conteneurisées sur Kubernetes et de leur cycle de vie, depuis la containerisation jusqu'au déploiement, à la mise à l'échelle et à la gestion.
+
+
+# Annexe 1 - 
+Pour cet examen pratique sur Kubernetes, vous n'avez pas besoin d'un nom de domaine réel. Vous pouvez effectuer tout le travail en local grâce à des outils comme Minikube ou k3s, qui vous permettent de simuler un environnement Kubernetes sur votre propre machine. Cela inclut la configuration du réseau, le déploiement des applications, et l'exposition des services sans nécessiter un domaine internet.
+
+Votre examen requiert l'utilisation d'Ingress pour exposer des services, vous pouvez simplement modifier le fichier `/etc/hosts` de votre système pour simuler un nom de domaine en le faisant pointer vers l'adresse IP locale de votre Minikube ou k3s. Vous pouvez procéder de cette façon :
+
+1. Déterminez l'adresse IP de votre Minikube ou k3s (souvent c'est `192.168.49.2` pour Minikube).
+2. Ajoutez une ligne à votre fichier `/etc/hosts` de cette forme :
+   ```
+   192.168.49.2 mondomaine.local
+   ```
+   Remplacez `192.168.49.2` par l'adresse IP réelle et `mondomaine.local` par le nom fictif que vous souhaitez utiliser.
+
+En utilisant cette méthode, vous pouvez accéder à vos applications via un navigateur en utilisant le nom de domaine fictif, tout en travaillant entièrement en local. Cela vous évite d'avoir à enregistrer et payer pour un nom de domaine réel, tout en vous permettant de compléter tous les aspects de votre travail pratique.
