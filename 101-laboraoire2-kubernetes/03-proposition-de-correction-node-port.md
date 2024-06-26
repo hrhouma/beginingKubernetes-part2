@@ -330,3 +330,18 @@ Ce diagramme montre comment les composants se connectent et interagissent au sei
         v
 [PersistentVolumeClaim]
 ```
+
+# Annexe 3
+
+## Objets Kubernetes impliqués dans votre configuration, présentés sous forme de tableau :
+
+| Type d'objet                 | Nom de l'objet           | Description                                       |
+|------------------------------|--------------------------|---------------------------------------------------|
+| Deployment                   | MySQL Deployment         | Exécute l'image de MySQL.                         |
+| Deployment                   | WordPress Deployment     | Exécute l'image de WordPress et se connecte à MySQL. |
+| Service                      | MySQL Service            | Expose MySQL à l'intérieur du cluster sur le port TCP 3306. |
+| Service                      | WordPress Service        | Expose WordPress à l'extérieur du cluster via un NodePort sur le port TCP 30080. |
+| PersistentVolume             | MySQL PersistentVolume   | Fournit un stockage persistant pour les données MySQL. |
+| PersistentVolumeClaim        | MySQL PersistentVolumeClaim | Réclame l'espace de stockage spécifié par le PersistentVolume pour MySQL. |
+
+- Ces six objets sont essentiels pour la gestion et l'exposition de votre application WordPress et de la base de données MySQL sur Kubernetes.
