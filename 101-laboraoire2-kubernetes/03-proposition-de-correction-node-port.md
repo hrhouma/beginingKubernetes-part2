@@ -245,9 +245,30 @@ minikube service wordpress --url
 Ce tutoriel vous guide pour déployer votre application Docker Compose sur Kubernetes en utilisant Minikube, et exposer votre service WordPress via un NodePort. Vous n'avez pas besoin de pusher les images sur Docker Hub puisque `mysql:5.7` et `wordpress:latest` sont déjà disponibles publiquement.
 
 
+# Annexe 0 : Les différents objets de notre déploiement Docker Compose sur Kubernetes
+
+
+1. **Services Kubernetes**:
+   - Un service pour MySQL.
+   - Un service pour WordPress avec NodePort pour accéder depuis l'extérieur.
+
+2. **Déploiements Kubernetes**:
+   - Un déploiement pour MySQL, indiquant l'utilisation de l'image `mysql:5.7`.
+   - Un déploiement pour WordPress, utilisant l'image `wordpress:latest`.
+
+3. **Volumes et Claims**:
+   - Un PersistentVolume (PV) et un PersistentVolumeClaim (PVC) pour MySQL pour la persistance des données.
+
+4. **Connexions/Relations**:
+   - Connexion entre le service WordPress et le déploiement WordPress via le port 80.
+   - Connexion entre le service MySQL et le déploiement MySQL via le port 3306.
+   - Utilisation du volume par le déploiement MySQL pour la persistance des données.
+
+
+
 # Annexe 1 :
 
-:
+- Ce schéma va représenter les services, les volumes, les déploiements et les connexions entre eux.
 
 ```plaintext
 +----------------------+       +-------------------------+       +----------------------+
