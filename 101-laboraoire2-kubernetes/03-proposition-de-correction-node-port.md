@@ -129,7 +129,9 @@ spec:
     - ReadWriteOnce
   hostPath:
     path: "/mnt/data"
+```
 
+```yaml
 # PersistentVolumeClaim
 apiVersion: v1
 kind: PersistentVolumeClaim
