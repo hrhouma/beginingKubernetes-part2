@@ -243,3 +243,69 @@ minikube service wordpress --url
 ```
 
 Ce tutoriel vous guide pour déployer votre application Docker Compose sur Kubernetes en utilisant Minikube, et exposer votre service WordPress via un NodePort. Vous n'avez pas besoin de pusher les images sur Docker Hub puisque `mysql:5.7` et `wordpress:latest` sont déjà disponibles publiquement.
+
+
+# Annexe 1 :
+
+:
+
+```plaintext
++----------------------+       +-------------------------+       +----------------------+
+|    MySQL Service     |       |      WordPress Service   |       | External Access      |
+|    (Cluster IP)      |       |      (NodePort 30080)    |       | (via Minikube)       |
+|                      |       |                          |       |                      |
+|       +-----------+  |       |       +---------------+  |       |       +-----------+  |
+|       |           |  |       |       |               |  |       |       |           |  |
+|       | MySQL     |<--------|-------| WordPress     |<---------|-------| Browser   |  |
+|       | Deployment|  |       |       | Deployment    |  |       |       |           |  |
+|       |           |  |       |       |               |  |       |       |           |  |
+|       +-----------+  |       |       +---------------+  |       |       +-----------+  |
+|                      |       |                          |       |                      |
++----------------------+       +-------------------------+       +----------------------+
+       |                          |                                  
+       v                          v                                  
++----------------------+       +-------------------------+       
+|    Persistent        |       |       WordPress          |       
+|    Volume Claim      |       |       Config Files       |       
+|    (MySQL Data)      |       |       (WP Content)       |       
+|                      |       |                          |       
+|       +-----------+  |       |       +---------------+  |       
+|       |           |  |       |       |               |  |       
+|       | PV        |<--------|-------| PVC            |  |       
+|       | (Storage) |  |       |       | (Storage)     |  |       
+|       |           |  |       |       |               |  |       
+|       +-----------+  |       |       +---------------+  |       
+|                      |       |                          |       
++----------------------+       +-------------------------+       
+```
+
+Ce diagramme montre comment les composants se connectent et interagissent au sein de votre environnement Kubernetes. Il présente la relation entre les services, les déploiements et les volumes, ainsi que la façon dont l'accès externe est géré via Minikube. Vous pouvez l'ajuster pour correspondre plus précisément à votre configuration si nécessaire.
+
+# Annexe 2 : 
+
+
+```plaintext
+[WordPress Service]
+        |
+        v
+[WordPress Deployment] -----> [WordPress:latest]
+        |                             ^
+        |                             |
+        v                             |
+    [NodePort 30080] <------------ [Port 80]
+        |
+        v
+-------------------------------- Kubernetes Cluster ------------------------------
+        |
+        v
+   [MySQL Service]
+        |
+        v
+[MySQL Deployment] ------> [MySQL:5.7]
+        |
+        v
+ [PersistentVolume]
+        |
+        v
+[PersistentVolumeClaim]
+```
