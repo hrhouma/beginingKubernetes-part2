@@ -1,8 +1,6 @@
-Oui, vous avez raison. Lorsque vous utilisez Minikube, l'utilisation de NodePort est souvent une solution plus adaptée pour exposer vos services. Voici comment vous pouvez adapter les fichiers de service Kubernetes pour utiliser NodePort avec Minikube.
+# Tutoriel : Déployer une application Docker Compose sur Kubernetes avec NodePort
 
-### Tutoriel : Déployer une application Docker Compose sur Kubernetes avec NodePort
-
-#### Étape 1: Préparer les fichiers Docker Compose
+# Étape 1: Préparer les fichiers Docker Compose
 
 Voici votre fichier `docker-compose.yml` pour une application avec MySQL et WordPress :
 
@@ -37,7 +35,22 @@ volumes:
     db_data: {}
 ```
 
-#### Étape 2: Convertir la configuration Docker Compose en fichiers de déploiement Kubernetes
+# Optionnel mais obligatoire si vous travaillez avec des images personnalisées !
+- nano docker-compose.yaml
+- cat docker-compose.yaml
+- docker-compose up -d
+- docker ps
+- cat docker-compose.yaml
+- docker login
+- docker images
+- docker push hrehouma1/wordpress:1.0
+- docker tag wordpress:latest  hrehouma1/wordpress:1.0
+- docker tag mysql:5.7  hrehouma1/mysql:5.7
+- docker push hrehouma1/wordpress:1.0
+- docker push hrehouma1/mysql:5.7
+
+
+# Étape 2: Convertir la configuration Docker Compose en fichiers de déploiement Kubernetes
 
 ##### Déploiement Kubernetes pour MySQL
 
@@ -186,7 +199,7 @@ spec:
   type: NodePort
 ```
 
-#### Étape 3: Déployer les services sur Kubernetes
+# Étape 3: Déployer les services sur Kubernetes
 
 1. **Appliquer le PersistentVolume et PersistentVolumeClaim pour MySQL :**
 
@@ -213,7 +226,7 @@ spec:
    minikube service wordpress --url
    ```
 
-### Résumé des commandes
+# Résumé des commandes
 
 ```bash
 # Se connecter à Docker Hub (si nécessaire)
