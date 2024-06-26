@@ -1,58 +1,59 @@
 # Tutoriel : Déployer une application Docker Compose sur Kubernetes avec NodePort
 
-# Étape 1: Préparer les fichiers Docker Compose
+## Étape 1: Préparer les fichiers Docker Compose
 
-Voici votre fichier `docker-compose.yml` pour une application avec MySQL et WordPress :
+Ci-dessous, le fichier `docker-compose.yml` pour une application utilisant MySQL et WordPress :
 
 ```yaml
 version: '3.3'
 
 services:
-   db:
-     image: mysql:5.7
-     volumes:
-       - db_data:/var/lib/mysql
-     restart: always
-     environment:
-       MYSQL_ROOT_PASSWORD: somewordpress
-       MYSQL_DATABASE: wordpress
-       MYSQL_USER: wordpress
-       MYSQL_PASSWORD: wordpress
+  db:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: somewordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
 
-   wordpress:
-     depends_on:
-       - db
-     image: wordpress:latest
-     ports:
-       - "8000:80"
-     restart: always
-     environment:
-       WORDPRESS_DB_HOST: db:3306
-       WORDPRESS_DB_USER: wordpress
-       WORDPRESS_DB_PASSWORD: wordpress
-       WORDPRESS_DB_NAME: wordpress
+  wordpress:
+    depends_on:
+      - db
+    image: wordpress:latest
+    ports:
+      - "8000:80"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+
 volumes:
-    db_data: {}
+  db_data: {}
 ```
 
-# Optionnel mais obligatoire si vous travaillez avec des images personnalisées !
-- nano docker-compose.yaml
-- cat docker-compose.yaml
-- docker-compose up -d
-- docker ps
-- cat docker-compose.yaml
-- docker login
-- docker images
-- docker push hrehouma1/wordpress:1.0
-- docker tag wordpress:latest  hrehouma1/wordpress:1.0
-- docker tag mysql:5.7  hrehouma1/mysql:5.7
-- docker push hrehouma1/wordpress:1.0
-- docker push hrehouma1/mysql:5.7
+### Commandes Docker utiles (si vous travaillez avec des images personnalisées) :
 
+```bash
+nano docker-compose.yaml
+cat docker-compose.yaml
+docker-compose up -d
+docker ps
+docker login
+docker images
+docker tag wordpress:latest hrehouma1/wordpress:1.0
+docker tag mysql:5.7 hrehouma1/mysql:5.7
+docker push hrehouma1/wordpress:1.0
+docker push hrehouma1/mysql:5.7
+```
 
-# Étape 2: Convertir la configuration Docker Compose en fichiers de déploiement Kubernetes
+## Étape 2: Convertir la configuration Docker Compose en fichiers de déploiement Kubernetes
 
-##### Déploiement Kubernetes pour MySQL
+### Déploiement Kubernetes pour MySQL
 
 Créez un fichier `mysql-deployment.yaml` :
 
@@ -92,7 +93,7 @@ spec:
           claimName: mysql-pvc
 ```
 
-##### Service Kubernetes pour MySQL
+### Service Kubernetes pour MySQL
 
 Créez un fichier `mysql-service.yaml` :
 
@@ -111,11 +112,12 @@ spec:
   clusterIP: None
 ```
 
-##### PersistentVolume et PersistentVolumeClaim pour MySQL
+### PersistentVolume et PersistentVolumeClaim pour MySQL
 
-Créez un fichier `mysql-pv.yaml` :
+Créez un fichier `mysql-pv.yaml` et `mysql-pvc.yaml` :
 
 ```yaml
+# PersistentVolume
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -127,11 +129,8 @@ spec:
     - ReadWriteOnce
   hostPath:
     path: "/mnt/data"
-```
 
-Créez un fichier `mysql-pvc.yaml` :
-
-```yaml
+# PersistentVolumeClaim
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -144,7 +143,7 @@ spec:
       storage: 1Gi
 ```
 
-##### Déploiement Kubernetes pour WordPress
+### Déploiement Kubernetes pour WordPress
 
 Créez un fichier `wordpress-deployment.yaml` :
 
@@ -179,7 +178,7 @@ spec:
         - containerPort: 80
 ```
 
-##### Service Kubernetes pour WordPress avec NodePort
+### Service Kubernetes pour WordPress avec NodePort
 
 Créez un fichier `wordpress-service.yaml` :
 
@@ -199,7 +198,7 @@ spec:
   type: NodePort
 ```
 
-# Étape 3: Déployer les services sur Kubernetes
+## Étape 3: Déployer les services sur Kubernetes
 
 1. **Appliquer le PersistentVolume et PersistentVolumeClaim pour MySQL :**
 
@@ -213,7 +212,6 @@ spec:
    ```bash
    kubectl apply -f mysql-deployment.yaml
    kubectl apply -f mysql-service.yaml
-
    kubectl apply -f wordpress-deployment.yaml
    kubectl apply -f wordpress-service.yaml
    ```
@@ -226,7 +224,7 @@ spec:
    minikube service wordpress --url
    ```
 
-# Résumé des commandes
+## Résumé des commandes
 
 ```bash
 # Se connecter à Docker Hub (si nécessaire)
@@ -244,4 +242,4 @@ kubectl apply -f wordpress-service.yaml
 minikube service wordpress --url
 ```
 
-Avec ces étapes, vous pouvez déployer votre application Docker Compose sur Kubernetes en utilisant Minikube et exposer votre service WordPress via un NodePort. Vous n'avez pas besoin de pusher les images sur Docker Hub puisque `mysql:5.7` et `wordpress:latest` sont déjà disponibles publiquement.
+Ce tutoriel vous guide pour déployer votre application Docker Compose sur Kubernetes en utilisant Minikube, et exposer votre service WordPress via un NodePort. Vous n'avez pas besoin de pusher les images sur Docker Hub puisque `mysql:5.7` et `wordpress:latest` sont déjà disponibles publiquement.
