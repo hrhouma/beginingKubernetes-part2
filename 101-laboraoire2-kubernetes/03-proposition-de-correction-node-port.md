@@ -586,13 +586,13 @@ Marc est ravi de voir que son application est accessible via `http://<IP_du_noeu
 
 # (P3/4) Questions de Développement basées sur l'Histoire de Marc et son Déploiement Kubernetes
 
-#### Questions sur la Préparation et le Docker Compose
+# Questions sur la Préparation et le Docker Compose
 
 1. **Pourquoi Marc utilise-t-il un volume persistant (`db_data`) dans son fichier `docker-compose.yml` pour le service MySQL ?**
 
 2. **Quelle est la fonction des variables d'environnement définies dans le service WordPress du fichier `docker-compose.yml` ? Donnez deux exemples.**
 
-#### Questions sur la Conversion en Kubernetes
+# Questions sur la Conversion en Kubernetes
 
 3. **Expliquez pourquoi Marc a besoin de créer un fichier `mysql-deployment.yaml` pour déployer MySQL sur Kubernetes.**
 
@@ -600,7 +600,7 @@ Marc est ravi de voir que son application est accessible via `http://<IP_du_noeu
 
 5. **Comment le service MySQL (`mysql-service.yaml`) permet-il aux autres pods de se connecter à la base de données MySQL ?**
 
-#### Questions sur les Services et l'Accessibilité
+# Questions sur les Services et l'Accessibilité
 
 6. **Pourquoi Marc choisit-il un service de type `NodePort` pour exposer WordPress à l'extérieur du cluster Kubernetes ?**
 
@@ -608,13 +608,13 @@ Marc est ravi de voir que son application est accessible via `http://<IP_du_noeu
 
 8. **Quelle commande Marc utilise-t-il pour obtenir l'URL du service WordPress une fois déployé sur Minikube ?**
 
-#### Questions sur les Volumes Persistants
+# Questions sur les Volumes Persistants
 
 9. **Quelle est la différence entre un `PersistentVolume` (PV) et un `PersistentVolumeClaim` (PVC) ? Pourquoi sont-ils cruciaux pour le déploiement de MySQL de Marc ?**
 
 10. **Expliquez comment le `PersistentVolumeClaim` (PVC) garantit la persistance des données pour MySQL.**
 
-#### Questions sur les Objets Kubernetes
+# Questions sur les Objets Kubernetes
 
 11. **Quel est le rôle principal d'un `Deployment` dans Kubernetes et comment Marc l'utilise-t-il pour ses services MySQL et WordPress ?**
 
@@ -622,7 +622,7 @@ Marc est ravi de voir que son application est accessible via `http://<IP_du_noeu
 
 13. **Marc a configuré un `PersistentVolume` avec `hostPath`. Quelles seraient les implications de cette configuration si le cluster Kubernetes est déployé sur plusieurs nœuds ?**
 
-### Résumé des Objets Kubernetes
+# Résumé des Objets Kubernetes
 
 14. **Complétez le tableau suivant en expliquant brièvement le rôle de chaque objet Kubernetes utilisé par Marc :**
 
@@ -638,3 +638,8 @@ Marc est ravi de voir que son application est accessible via `http://<IP_du_noeu
 
 
 Grâce à cette architecture, Marc a assuré que son application e-commerce est résiliente, scalable et toujours accessible pour ses utilisateurs, tout en maintenant la sécurité et la persistance des données critiques.
+
+# Remarque : 
+- Les points sont attribués en fonction de la clarté, de la mise en forme de la remise et de la qualité du français utilisé.
+
+# (P4/4) Correction - à venir
