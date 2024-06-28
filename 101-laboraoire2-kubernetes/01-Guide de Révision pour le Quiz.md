@@ -396,9 +396,7 @@ Cette commande crée ou met à jour les ressources définies dans `myconfig.yaml
 
 #### 56. Redémarrage Automatique des Pods
 
-**
-
-Ressource:** `ReplicaSet` est une ressource Kubernetes utilisée pour assurer que les Pods sont automatiquement redémarrés si nécessaire pour maintenir un nombre de répliques spécifié. Cet objet surveille et maintient le nombre de Pods en cours d'exécution.
+**Ressource:** `ReplicaSet` est une ressource Kubernetes utilisée pour assurer que les Pods sont automatiquement redémarrés si nécessaire pour maintenir un nombre de répliques spécifié. Cet objet surveille et maintient le nombre de Pods en cours d'exécution.
 
 ---
 
