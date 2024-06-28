@@ -347,3 +347,239 @@ Ce diagramme montre comment les composants se connectent et interagissent au sei
 | PersistentVolumeClaim        | MySQL PersistentVolumeClaim | Réclame l'espace de stockage spécifié par le PersistentVolume pour MySQL. |
 
 - Ces six objets sont essentiels pour la gestion et l'exposition de votre application WordPress et de la base de données MySQL sur Kubernetes.
+
+
+
+# Histoire de Marc et son Déploiement Kubernetes
+
+Marc, un développeur passionné de technologies web, travaille sur une application e-commerce. Pour s'assurer que son application soit toujours disponible et scalable, il décide de migrer son déploiement local Docker Compose vers Kubernetes. Son application utilise WordPress pour le front-end et MySQL pour la base de données.
+
+# 1 - Préparation des Fichiers Docker Compose
+
+Marc commence par définir son fichier `docker-compose.yml` pour orchestrer ses conteneurs MySQL et WordPress.
+
+```yaml
+version: '3.3'
+
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: somewordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+
+  wordpress:
+    depends_on:
+      - db
+    image: wordpress:latest
+    ports:
+      - "8000:80"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+
+volumes:
+  db_data: {}
+```
+
+Marc utilise ensuite les commandes Docker pour vérifier et démarrer ses services en arrière-plan :
+
+```sh
+nano docker-compose.yaml
+cat docker-compose.yaml
+docker-compose up -d
+docker ps
+```
+
+# 2 -  Conversion en Kubernetes
+
+Afin de profiter des fonctionnalités avancées de Kubernetes, Marc convertit son fichier Docker Compose en plusieurs fichiers YAML de déploiement Kubernetes.
+
+#### Déploiement de MySQL
+
+Marc crée le fichier `mysql-deployment.yaml` pour définir un `Deployment` Kubernetes pour MySQL. Ce `Deployment` spécifie l'image Docker `mysql:5.7`, les variables d'environnement nécessaires, et monte un volume persistant pour stocker les données.
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:5.7
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "somewordpress"
+        - name: MYSQL_DATABASE
+          value: "wordpress"
+        - name: MYSQL_USER
+          value: "wordpress"
+        - name: MYSQL_PASSWORD
+          value: "wordpress"
+        volumeMounts:
+        - name: mysql-storage
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: mysql-storage
+        persistentVolumeClaim:
+          claimName: mysql-pvc
+```
+
+# 3 - Service MySQL
+
+Ensuite, Marc crée un service `ClusterIP` pour MySQL (`mysql-service.yaml`), qui permet à WordPress de se connecter à MySQL à l'intérieur du cluster Kubernetes via l'adresse `mysql:3306`.
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+spec:
+  selector:
+    app: mysql
+  ports:
+  - protocol: TCP
+    port: 3306
+    targetPort: 3306
+  clusterIP: None
+```
+
+# 4 - Volume Persistant
+
+Pour garantir que les données de la base de données MySQL soient persistantes, Marc configure un `PersistentVolume` (PV) et un `PersistentVolumeClaim` (PVC).
+
+```yaml
+# PersistentVolume (mysql-pv.yaml)
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mysql-pv
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data"
+
+# PersistentVolumeClaim (mysql-pvc.yaml)
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+```
+
+# 5 - Déploiement de WordPress
+
+Marc crée un autre `Deployment` pour WordPress (`wordpress-deployment.yaml`), où il spécifie l'image Docker `wordpress:latest` et les variables d'environnement pour se connecter à la base de données MySQL.
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordpress
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wordpress
+  template:
+    metadata:
+      labels:
+        app: wordpress
+    spec:
+      containers:
+      - name: wordpress
+        image: wordpress:latest
+        env:
+        - name: WORDPRESS_DB_HOST
+          value: "mysql:3306"
+        - name: WORDPRESS_DB_USER
+          value: "wordpress"
+        - name: WORDPRESS_DB_PASSWORD
+          value: "wordpress"
+        - name: WORDPRESS_DB_NAME
+          value: "wordpress"
+        ports:
+        - containerPort: 80
+```
+
+# 6 -  Service WordPress
+
+Marc configure enfin un service `NodePort` pour exposer WordPress à l'extérieur du cluster (`wordpress-service.yaml`), permettant aux utilisateurs externes d'accéder à l'application via `http://<IP_du_noeud>:30080`.
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordpress
+spec:
+  selector:
+    app: wordpress
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+    nodePort: 30080
+  type: NodePort
+```
+
+### Déploiement et Accessibilité
+
+Pour déployer toutes ces configurations sur Kubernetes, Marc exécute les commandes suivantes :
+
+```sh
+kubectl apply -f mysql-pv.yaml
+kubectl apply -f mysql-pvc.yaml
+kubectl apply -f mysql-deployment.yaml
+kubectl apply -f mysql-service.yaml
+kubectl apply -f wordpress-deployment.yaml
+kubectl apply -f wordpress-service.yaml
+```
+
+Pour vérifier que tout fonctionne correctement et obtenir l'URL de son service WordPress, il utilise :
+
+```sh
+minikube service wordpress --url
+```
+
+# 7 - Accès Externe
+
+Marc est ravi de voir que son application est accessible via `http://<IP_du_noeud>:30080`. Il sait maintenant que son application e-commerce peut gérer des volumes de trafic élevés tout en garantissant que les données des clients sont sécurisées et persistantes.
+
+### Résumé des Objets Kubernetes
+
+| Type d'objet        | Nom de l'objet           | Description                                                                 |
+|---------------------|--------------------------|-----------------------------------------------------------------------------|
+| **Deployment**      | MySQL Deployment         | Gère la création et la gestion du conteneur MySQL, incluant les variables d'environnement et le montage de volume. |
+| **Deployment**      | WordPress Deployment     | Gère la création et la gestion du conteneur WordPress, incluant les variables d'environnement pour la connexion à MySQL. |
+| **Service**         | MySQL Service            | Expose MySQL à l'intérieur du cluster via un `ClusterIP` sur le port 3306.  |
+| **Service**         | WordPress Service        | Expose WordPress à l'extérieur du cluster via un `NodePort` sur le port 30080. |
+| **PersistentVolume**| MySQL PersistentVolume   | Fournit une ressource de stockage physique pour les données MySQL.          |
+| **PersistentVolumeClaim** | MySQL PersistentVolumeClaim | Demande de stockage pour les données MySQL, utilisant le PV configuré. |
+
+Grâce à cette architecture, Marc a assuré que son application e-commerce est résiliente, scalable et toujours accessible pour ses utilisateurs, tout en maintenant la sécurité et la persistance des données critiques.
