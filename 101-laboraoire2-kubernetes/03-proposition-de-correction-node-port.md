@@ -1,4 +1,4 @@
-# Tutoriel : Déployer une application Docker Compose sur Kubernetes avec NodePort
+# (P1/4) Déployer une application Docker Compose sur Kubernetes avec NodePort
 
 ## Étape 1: Préparer les fichiers Docker Compose
 
@@ -350,7 +350,7 @@ Ce diagramme montre comment les composants se connectent et interagissent au sei
 
 
 
-# Histoire de Marc et son Déploiement Kubernetes
+# (P2/4) Histoire de Marc et son Déploiement Kubernetes
 
 Marc, un développeur passionné de technologies web, travaille sur une application e-commerce. Pour s'assurer que son application soit toujours disponible et scalable, il décide de migrer son déploiement local Docker Compose vers Kubernetes. Son application utilise WordPress pour le front-end et MySQL pour la base de données.
 
@@ -581,5 +581,60 @@ Marc est ravi de voir que son application est accessible via `http://<IP_du_noeu
 | **Service**         | WordPress Service        | Expose WordPress à l'extérieur du cluster via un `NodePort` sur le port 30080. |
 | **PersistentVolume**| MySQL PersistentVolume   | Fournit une ressource de stockage physique pour les données MySQL.          |
 | **PersistentVolumeClaim** | MySQL PersistentVolumeClaim | Demande de stockage pour les données MySQL, utilisant le PV configuré. |
+
+
+
+# (P3/4) Questions de Développement basées sur l'Histoire de Marc et son Déploiement Kubernetes
+
+#### Questions sur la Préparation et le Docker Compose
+
+1. **Pourquoi Marc utilise-t-il un volume persistant (`db_data`) dans son fichier `docker-compose.yml` pour le service MySQL ?**
+
+2. **Quelle est la fonction des variables d'environnement définies dans le service WordPress du fichier `docker-compose.yml` ? Donnez deux exemples.**
+
+#### Questions sur la Conversion en Kubernetes
+
+3. **Expliquez pourquoi Marc a besoin de créer un fichier `mysql-deployment.yaml` pour déployer MySQL sur Kubernetes.**
+
+4. **Dans le fichier `mysql-deployment.yaml`, quel est le rôle de la section `volumeMounts` et pourquoi est-elle importante ?**
+
+5. **Comment le service MySQL (`mysql-service.yaml`) permet-il aux autres pods de se connecter à la base de données MySQL ?**
+
+#### Questions sur les Services et l'Accessibilité
+
+6. **Pourquoi Marc choisit-il un service de type `NodePort` pour exposer WordPress à l'extérieur du cluster Kubernetes ?**
+
+7. **Décrivez le processus permettant à un utilisateur externe, comme Marc, d'accéder à l'application WordPress via un service `NodePort`.**
+
+8. **Quelle commande Marc utilise-t-il pour obtenir l'URL du service WordPress une fois déployé sur Minikube ?**
+
+#### Questions sur les Volumes Persistants
+
+9. **Quelle est la différence entre un `PersistentVolume` (PV) et un `PersistentVolumeClaim` (PVC) ? Pourquoi sont-ils cruciaux pour le déploiement de MySQL de Marc ?**
+
+10. **Expliquez comment le `PersistentVolumeClaim` (PVC) garantit la persistance des données pour MySQL.**
+
+#### Questions sur les Objets Kubernetes
+
+11. **Quel est le rôle principal d'un `Deployment` dans Kubernetes et comment Marc l'utilise-t-il pour ses services MySQL et WordPress ?**
+
+12. **Pourquoi est-il important de définir les variables d'environnement dans les fichiers de déploiement Kubernetes pour les conteneurs MySQL et WordPress ? Donnez un exemple pour chaque conteneur.**
+
+13. **Marc a configuré un `PersistentVolume` avec `hostPath`. Quelles seraient les implications de cette configuration si le cluster Kubernetes est déployé sur plusieurs nœuds ?**
+
+### Résumé des Objets Kubernetes
+
+14. **Complétez le tableau suivant en expliquant brièvement le rôle de chaque objet Kubernetes utilisé par Marc :**
+
+| Type d'objet        | Nom de l'objet           | Description                                                                 |
+|---------------------|--------------------------|-----------------------------------------------------------------------------|
+| **Deployment**      | MySQL Deployment         |                                                                             |
+| **Deployment**      | WordPress Deployment     |                                                                             |
+| **Service**         | MySQL Service            |                                                                             |
+| **Service**         | WordPress Service        |                                                                             |
+| **PersistentVolume**| MySQL PersistentVolume   |                                                                             |
+| **PersistentVolumeClaim** | MySQL PersistentVolumeClaim |                                                                             |
+
+
 
 Grâce à cette architecture, Marc a assuré que son application e-commerce est résiliente, scalable et toujours accessible pour ses utilisateurs, tout en maintenant la sécurité et la persistance des données critiques.
