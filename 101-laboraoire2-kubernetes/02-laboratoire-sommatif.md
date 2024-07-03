@@ -283,3 +283,7 @@ Si vous avez besoin de modifier les ressources (CPU, mémoire) de votre cluster 
    ```bash
    minikube start --memory=4096 --cpus=2
    ```
+
+   # Références :
+   
+- https://stackoverflow.com/questions/72147700/deleting-minikube-cluster-so-i-can-create-a-larger-cluster-with-more-cpus
