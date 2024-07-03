@@ -210,9 +210,7 @@ Le but de ce TP est :
 
 Complétez le tableau suivant avec les informations nécessaires :
 
-| Étape                           | Commande utilisée
-
-           | Résultat/Observation                                                                 |
+| Étape                           | Commande utilisée | Résultat/Observation                                                                 |
 |---------------------------------|-----------------------------|--------------------------------------------------------------------------------------|
 | Création des images Docker      | `________`                  |                                                                                      |
 | Poussée des images sur Docker Hub | `________`                |                                                                                      |
