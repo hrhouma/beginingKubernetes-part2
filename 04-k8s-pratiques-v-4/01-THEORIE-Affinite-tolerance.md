@@ -272,3 +272,51 @@ spec:
 ## Conclusion
 
 L'utilisation des affinités, des anti-affinités et des tolérances dans Kubernetes permet un contrôle granulaire de la planification des pods, assurant une gestion optimale des ressources et des déploiements. Ces mécanismes permettent de s'adapter aux exigences spécifiques des applications tout en maintenant la stabilité et la performance du cluster.
+
+# Annexe 1 
+
+- **Introduction**
+  - Affinités de pods, anti-affinités, tolérances : contrôle avancé de la planification des pods
+
+- **Nodeselector**
+  - Utilisation de labels de nœud pour contraindre la planification des pods
+
+- **Affinités et Anti-Affinités** (requiredDuringSchedulingIgnoredDuringExecution, preferredDuringSchedulingIgnoredDuringExecution, requiredDuringSchedulingRequiredDuringExecution)
+
+- **Tolérances et Taints**
+  - Taints : empêchent la planification sur certains nœuds (NoSchedule, PreferNoSchedule, NoExecute)
+  - Tolérances : permettent la planification sur des nœuds avec taints
+
+- **Conclusion**
+  - Utilisation des affinités, anti-affinités et tolérances pour un contrôle fin et optimal de la planification des pods
+ 
+# Annexe 2
+
+- Relations entre Nodeselector, Affinités et Anti-Affinités, et Tolérances et Taints, incluant les nœuds et les pods, ainsi que les différentes valeurs possibles :
+
+| Concept                    | Relé à                  | Nœuds  | Pods   | Différentes valeurs possibles                                 | Description                                                                 |
+|----------------------------|-------------------------|--------|-------|---------------------------------------------------------------|-----------------------------------------------------------------------------|
+| **Nodeselector**           | Labels de nœuds         | ✔      |       | Labels personnalisés (ex : disktype=ssd)                      | Contraint les pods à être programmés uniquement sur des nœuds avec des labels spécifiques. |
+| **Affinités**              | Labels de nœuds/pods    | ✔      | ✔     | requiredDuringSchedulingIgnoredDuringExecution, preferredDuringSchedulingIgnoredDuringExecution, requiredDuringSchedulingRequiredDuringExecution (en développement) | Contraintes flexibles et expressives pour la planification basées sur des labels. |
+| **Anti-Affinités**         | Labels de nœuds/pods    | ✔      | ✔     | requiredDuringSchedulingIgnoredDuringExecution, preferredDuringSchedulingIgnoredDuringExecution, requiredDuringSchedulingRequiredDuringExecution (en développement) | Contraintes flexibles et expressives pour éviter la planification basées sur des labels. |
+| **Tolérances**             | Taints des nœuds        |        | ✔     | key, operator (Equal), value, effect (NoSchedule, PreferNoSchedule, NoExecute) | Permettent aux pods d'être programmés sur des nœuds avec des taints spécifiques. |
+| **Taints**                 | Tolérances des pods     | ✔      |       | key, value, effect (NoSchedule, PreferNoSchedule, NoExecute)  | Empêchent les pods sans tolérances correspondantes d'être programmés sur des nœuds. |
+
+### Détails des concepts :
+
+- **Nodeselector** :
+  - Utilise des labels de nœuds pour contraindre la planification des pods.
+- **Affinités et Anti-Affinités** :
+  - Basées sur des labels.
+  - **Types d'affinités** : requiredDuringSchedulingIgnoredDuringExecution, preferredDuringSchedulingIgnoredDuringExecution, requiredDuringSchedulingRequiredDuringExecution.
+- **Tolérances et Taints** :
+  - **Taints** : Appliqués aux nœuds pour repousser certains pods.
+  - **Tolérances** : Ajoutées aux pods pour leur permettre d'être programmés sur des nœuds avec des taints correspondants.
+
+### Exemple des valeurs possibles pour les Taints et Tolérances :
+- **key** : nom de la clé (ex: `key1`)
+- **value** : valeur associée à la clé (ex: `value1`)
+- **effect** :
+  - **NoSchedule** : Empêche de programmer les pods sur le nœud.
+  - **PreferNoSchedule** : Préfère éviter de programmer les pods sur le nœud, mais ce n'est pas strict.
+  - **NoExecute** : Empêche de programmer de nouveaux pods et expulse les pods existants qui ne tolèrent pas cette taint.
