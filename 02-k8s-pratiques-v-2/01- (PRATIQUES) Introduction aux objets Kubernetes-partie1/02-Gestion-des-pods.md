@@ -2,7 +2,7 @@
 
 # 1 - Introduction
 
-Ce tutoriel guide les étudiants à travers les étapes de base pour la création, la gestion et la suppression de Pods dans un environnement Kubernetes. En utilisant l'outil en ligne de commande `kubectl` et un fichier de configuration YAML, nous apprendrons comment déployer un serveur web Nginx simple.
+Ce tutoriel vous guide  à travers les étapes de base pour la création, la gestion et la suppression de Pods dans un environnement Kubernetes. En utilisant l'outil en ligne de commande `kubectl` et un fichier de configuration YAML, nous apprendrons comment déployer un serveur web Nginx simple.
 
 # 2 - Prérequis
 
