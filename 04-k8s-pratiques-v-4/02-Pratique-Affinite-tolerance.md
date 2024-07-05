@@ -113,6 +113,9 @@ spec:
     effect: "NoSchedule"
 ```
 
+### Ce pod ne sera pas programmé que dans les noeuds avec la tainte suivante (experience=informatique)
+### Comme un candidat informaticien qui applique uniquement dans les comapgnies en informatique, mais s'il est déja recruté et qu'on lui donne une autre tâche, il ne va pas quitter.
+
 ### Étape 4 : Créer un Pod sans Tolérance
 Créez un autre fichier manifeste nommé `pod-without-toleration.yaml` pour un pod sans tolérance correspondante :
 ```yaml
@@ -125,6 +128,8 @@ spec:
   - name: mycontainer
     image: nginx
 ```
+### Ce pod peut être programmé dans tous les noeuds avec la tainte  (experience=informatique) ou la tainte (experience=réseaux) ou la tainte (experience=big-data ) ou peu importe...
+### Comme un candidat informaticien qui applique partout et qui fera n'importe quelle tâche !!!!
 
 ### Étape 5 : Créer un Pod avec Tolérance `NoExecute`
 Créez un fichier manifeste nommé `pod-with-toleration-noexecute.yaml` pour un pod avec la tolérance `NoExecute` :
@@ -143,6 +148,9 @@ spec:
     value: "informatique"
     effect: "NoExecute"
 ```
+
+### Ce pod ne sera pas programmé que dans les noeuds avec la tainte suivante (experience=informatique)
+### Comme un candidat informaticien qui applique uniquement dans les comapgnies en informatique, mais s'il est déja recruté et qu'on lui donne une autre tâche, il va démissionner.
 
 ### Étape 6 : Appliquer les Manifests
 Appliquez les manifests des pods pour les créer dans le cluster avec les commandes suivantes :
