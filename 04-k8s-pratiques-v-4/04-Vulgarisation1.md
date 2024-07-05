@@ -1,7 +1,7 @@
 #  Exemple de l'Utilisation des Taints et Tolérances dans un Processus de Recrutement
 
 # 1 -  Introduction - Exemple d'application pratique (réel) :
-Supposons qu'une entreprise reçoive 5000 candidatures par jour. Afin de filtrer les candidats et gérer efficacement le recrutement, l'entreprise décide de mettre en place une exigence stricte de 5 ans d'expérience. Cela représente une **taint** sur les candidatures (nœuds) avec une règle `NoSchedule` pour ceux qui n'ont pas cette expérience.
+Supposons qu'une entreprise (Noeud) reçoive 5000 candidatures (Pods) par jour. Afin de filtrer les candidats et gérer efficacement le recrutement, l'entreprise décide de mettre en place une exigence stricte de 5 ans d'expérience. Cela représente une **taint** sur les candidatures (nœuds) avec une règle `NoSchedule` pour ceux qui n'ont pas cette expérience.
 
 - **Taint appliquée** : `experience=5ans:NoSchedule` - Les candidatures sans cette expérience ne seront pas considérées.
 - **Tolérance ajoutée aux candidats** : Les candidats avec une tolérance `experience=5ans` pourront passer cette barrière initiale.
