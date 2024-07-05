@@ -5,7 +5,7 @@
    - [Qu'est-ce qu'un Taint ?](#quest-ce-quun-taint)
    - [Qu'est-ce qu'une Tolérance ?](#quest-ce-quune-tolérance)
 3. [Exercices Pratiques](#exercices-pratiques)
-   - [Exercice 1 : Maîtrise des Taints et Tolérances dans Kubernetes](#exercice-1-maîtrise-des-taints-et-tolérances-dans-kubernetes)
+   - [Exercice 1 : Maîtrise des Taints et Tolérances dans Kubernetes](#exercice-1--maîtrise-des-taints-et-tolérances-dans-kubernetes)
    - [Exercice 2 : Comprendre et Appliquer `requiredDuringSchedulingIgnoredDuringExecution`](#exercice-2-comprendre-et-appliquer-requiredduringschedulingignoredduringexecution)
    - [Exercice 3 : Mise en Pratique de `preferredDuringSchedulingIgnoredDuringExecution`](#exercice-3-mise-en-pratique-de-preferredduringschedulingignoredduringexecution)
    - [Exercice 4 : Exploration de `requiredDuringSchedulingRequiredDuringExecution`](#exercice-4-exploration-de-requiredduringschedulingrequiredduringexecution)
