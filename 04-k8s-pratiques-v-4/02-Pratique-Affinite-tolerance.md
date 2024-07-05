@@ -75,7 +75,7 @@ Les **tolérances** permettent aux pods de "tolérer" les taints appliqués aux 
    ```
 
 
---
+---
 
 **Exercice 1 amélioré : Maîtrise des Taints et Tolérances dans Kubernetes**
 
