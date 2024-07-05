@@ -1,4 +1,4 @@
-# README - Exemple de l'Utilisation des Affinités et Anti-Affinités dans un Processus de Recrutement
+# README - Exemple de l'Utilisation des Affinités et Anti-Affinités dans un Processus de Recrutement (Example2)
 
 ## Exemple d'application pratique (réel) :
 
