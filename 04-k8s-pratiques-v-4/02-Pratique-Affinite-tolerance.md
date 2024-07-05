@@ -74,6 +74,103 @@ Les **tolérances** permettent aux pods de "tolérer" les taints appliqués aux 
    kubectl delete pod mypod
    ```
 
+
+--
+
+**Exercice 1 amélioré : Maîtrise des Taints et Tolérances dans Kubernetes**
+
+- Cette version inclut l'ajout d'un pod avec une tolérance `NoExecute` pour illustrer comment différents types de tolérances affectent le placement des pods sur les nœuds marqués dans Kubernetes.
+
+**Objectif :** Comprendre et utiliser les taints et tolérances pour contrôler le placement des pods sur les nœuds du cluster.
+
+### Étape 1 : Démarrage de Minikube
+Pour initialiser votre cluster Kubernetes local, démarrez Minikube avec la commande suivante :
+```sh
+minikube start
+```
+
+### Étape 2 : Appliquer un Taint à un Nœud
+Un taint est utilisé pour marquer un nœud de manière à empêcher certains pods de s’y exécuter. Appliquez un taint au nœud Minikube avec la commande suivante :
+```sh
+kubectl taint nodes minikube experience=informatique:NoSchedule
+```
+
+### Étape 3 : Créer un Pod avec Tolérance
+Pour permettre à un pod de s'exécuter sur un nœud marqué par un taint, vous devez ajouter une tolérance correspondante dans la spécification du pod. Créez un fichier manifeste nommé `pod-with-toleration.yaml` avec le contenu suivant :
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  containers:
+  - name: mycontainer
+    image: nginx
+  tolerations:
+  - key: "experience"
+    operator: "Equal"
+    value: "informatique"
+    effect: "NoSchedule"
+```
+
+### Étape 4 : Créer un Pod sans Tolérance
+Créez un autre fichier manifeste nommé `pod-without-toleration.yaml` pour un pod sans tolérance correspondante :
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod-no-toleration
+spec:
+  containers:
+  - name: mycontainer
+    image: nginx
+```
+
+### Étape 5 : Créer un Pod avec Tolérance `NoExecute`
+Créez un fichier manifeste nommé `pod-with-toleration-noexecute.yaml` pour un pod avec la tolérance `NoExecute` :
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod-noexecute
+spec:
+  containers:
+  - name: mycontainer
+    image: nginx
+  tolerations:
+  - key: "experience"
+    operator: "Equal"
+    value: "informatique"
+    effect: "NoExecute"
+```
+
+### Étape 6 : Appliquer les Manifests
+Appliquez les manifests des pods pour les créer dans le cluster avec les commandes suivantes :
+```sh
+kubectl apply -f pod-with-toleration.yaml
+kubectl apply -f pod-without-toleration.yaml
+kubectl apply -f pod-with-toleration-noexecute.yaml
+```
+
+### Étape 7 : Vérification
+Vérifiez si les pods ont été créés et leur statut avec la commande suivante :
+```sh
+kubectl get pods -o wide
+```
+Vous devriez voir que le pod `mypod` (avec tolérance `NoSchedule`) et `mypod-noexecute` (avec tolérance `NoExecute`) sont en cours d'exécution, tandis que le pod `mypod-no-toleration` (sans tolérance) ne sera pas programmé sur le nœud marqué.
+
+### Étape 8 : Nettoyage
+Pour nettoyer les ressources créées et retirer le taint du nœud, exécutez les commandes suivantes :
+```sh
+kubectl taint nodes minikube experience=informatique:NoSchedule-
+kubectl delete pod mypod
+kubectl delete pod mypod-no-toleration
+kubectl delete pod mypod-noexecute
+```
+
+
+
+
 ### Exercice 2 : Comprendre et Appliquer `requiredDuringSchedulingIgnoredDuringExecution`
 
 **Objectif:** Créer un pod nécessitant un nœud spécifique basé sur une étiquette lors de sa planification.
