@@ -117,11 +117,38 @@ spec:
 
 Les affinités, les anti-affinités et les tolérances sont des outils puissants dans Kubernetes qui permettent un contrôle fin de la planification des pods. Comprendre et utiliser ces règles de manière efficace peut aider à assurer que vos pods sont programmés et exécutés de manière optimale en fonction des besoins et des contraintes de votre application.
 
-# Annexe 01 
+# Annexe 01 - Résumé sur les Affinités et les Tolérances dans Kubernetes
 
-Voici des tableaux comparatifs pour les différentes stratégies d'affinité, anti-affinité et tolérances dans Kubernetes.
+## Introduction
 
-### Tableau Comparatif des Stratégies d'Affinité et Anti-Affinité
+Dans Kubernetes, les affinités de pods, les anti-affinités et les tolérances sont des mécanismes avancés pour contrôler la planification des pods. Ces fonctionnalités permettent de spécifier où les pods doivent être placés dans un cluster, en fonction de diverses contraintes et préférences.
+
+## 1. Nodeselector
+
+Le `Nodeselector` est une méthode simple pour contraindre un pod à être programmé uniquement sur un ensemble de nœuds ayant des labels spécifiques. Il utilise des labels de nœud pour filtrer les nœuds admissibles.
+
+### Exemple de configuration Nodeselector
+
+Supposons que vous ayez des nœuds avec le label `disktype=ssd`. Vous pouvez utiliser `nodeselector` pour programmer un pod sur ces nœuds comme suit :
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+  nodeSelector:
+    disktype: ssd
+```
+
+## 2. Affinités et Anti-Affinités
+
+Les affinités et anti-affinités offrent une manière plus flexible et expressive de spécifier les contraintes de planification basées sur des labels. Il existe trois types principaux d'affinités :
+
+### 2.1 Types d'affinités de nœuds
 
 | Stratégie                                   | Description                                                                                         | Exemple d'Utilisation                                                                                                         | Analogie                                                                                            |
 |---------------------------------------------|-----------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|
@@ -131,69 +158,80 @@ Voici des tableaux comparatifs pour les différentes stratégies d'affinité, an
 
 ### Exemple de Configuration YAML pour les Affinités et Anti-Affinités
 
-| Stratégie                                   | Exemple YAML                                                                                     |
-|---------------------------------------------|--------------------------------------------------------------------------------------------------|
-| requiredDuringSchedulingIgnoredDuringExecution  | ```yaml                                                                                          |
-|                                             | apiVersion: v1                                                                                   |
-|                                             | kind: Pod                                                                                        |
-|                                             | metadata:                                                                                        |
-|                                             |   name: nginx                                                                                    |
-|                                             | spec:                                                                                            |
-|                                             |   containers:                                                                                    |
-|                                             |   - name: nginx                                                                                  |
-|                                             |     image: nginx                                                                                 |
-|                                             |   affinity:                                                                                      |
-|                                             |     nodeAffinity:                                                                                |
-|                                             |       requiredDuringSchedulingIgnoredDuringExecution:                                            |
-|                                             |         nodeSelectorTerms:                                                                       |
-|                                             |         - matchExpressions:                                                                      |
-|                                             |           - key: disktype                                                                        |
-|                                             |             operator: In                                                                         |
-|                                             |             values:                                                                              |
-|                                             |             - ssd                                                                                |
-|                                             | ```                                                                                              |
-| preferredDuringSchedulingIgnoredDuringExecution | ```yaml                                                                                          |
-|                                             | apiVersion: v1                                                                                   |
-|                                             | kind: Pod                                                                                        |
-|                                             | metadata:                                                                                        |
-|                                             |   name: nginx                                                                                    |
-|                                             | spec:                                                                                            |
-|                                             |   containers:                                                                                    |
-|                                             |   - name: nginx                                                                                  |
-|                                             |     image: nginx                                                                                 |
-|                                             |   affinity:                                                                                      |
-|                                             |     podAffinity:                                                                                 |
-|                                             |       preferredDuringSchedulingIgnoredDuringExecution:                                           |
-|                                             |       - weight: 1                                                                                |
-|                                             |         podAffinityTerm:                                                                         |
-|                                             |           labelSelector:                                                                         |
-|                                             |             matchExpressions:                                                                    |
-|                                             |             - key: app                                                                           |
-|                                             |               operator: In                                                                       |
-|                                             |               values:                                                                            |
-|                                             |               - frontend                                                                         |
-|                                             |           topologyKey: "kubernetes.io/hostname"                                                  |
-|                                             | ```                                                                                              |
-| requiredDuringSchedulingRequiredDuringExecution | *(Note : Cette fonctionnalité peut être en développement et ne pas être disponible dans toutes les versions de Kubernetes)* |
-|                                             | ```yaml                                                                                          |
-|                                             | apiVersion: v1                                                                                   |
-|                                             | kind: Pod                                                                                        |
-|                                             | metadata:                                                                                        |
-|                                             |   name: nginx                                                                                    |
-|                                             | spec:                                                                                            |
-|                                             |   containers:                                                                                    |
-|                                             |   - name: nginx                                                                                  |
-|                                             |     image: nginx                                                                                 |
-|                                             |   affinity:                                                                                      |
-|                                             |     nodeAffinity:                                                                                |
-|                                             |       requiredDuringSchedulingRequiredDuringExecution:                                           |
-|                                             |         nodeSelectorTerms:                                                                       |
-|                                             |         - matchExpressions:                                                                      |
-|                                             |           - key: disktype                                                                        |
-|                                             |             operator: In                                                                         |
-|                                             |             values:                                                                              |
-|                                             |             - ssd                                                                                |
-|                                             | ```                                                                                              |
+#### requiredDuringSchedulingIgnoredDuringExecution
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: disktype
+            operator: In
+            values:
+            - ssd
+```
+
+#### preferredDuringSchedulingIgnoredDuringExecution
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+  affinity:
+    podAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 1
+        podAffinityTerm:
+          labelSelector:
+            matchExpressions:
+            - key: app
+              operator: In
+              values:
+              - frontend
+          topologyKey: "kubernetes.io/hostname"
+```
+
+#### requiredDuringSchedulingRequiredDuringExecution
+
+(Note : Cette fonctionnalité peut être en développement et ne pas être disponible dans toutes les versions de Kubernetes)
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingRequiredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: disktype
+            operator: In
+            values:
+            - ssd
+```
+
+## 3. Tolérances et Taints
+
+Les `Taints` et `Tolerations` sont utilisés pour empêcher ou autoriser des pods à être programmés sur des nœuds spécifiques. Les taints empêchent les pods d'être programmés sur des nœuds qui ont ces taints, sauf si les pods ont des tolérances correspondantes.
 
 ### Tableau Comparatif des Tolérances et Taints
 
@@ -207,13 +245,13 @@ Voici des tableaux comparatifs pour les différentes stratégies d'affinité, an
 
 ### Exemple de Configuration YAML pour Tolérances et Taints
 
-#### Ajouter une taint à un nœud :
+#### Ajouter une taint à un nœud
 
 ```shell
 kubectl taint nodes nodename key=value:NoSchedule
 ```
 
-#### Ajouter une tolérance à un pod :
+#### Ajouter une tolérance à un pod
 
 ```yaml
 apiVersion: v1
@@ -231,6 +269,6 @@ spec:
     effect: "NoSchedule"
 ```
 
-### Conclusion
+## Conclusion
 
 L'utilisation des affinités, des anti-affinités et des tolérances dans Kubernetes permet un contrôle granulaire de la planification des pods, assurant une gestion optimale des ressources et des déploiements. Ces mécanismes permettent de s'adapter aux exigences spécifiques des applications tout en maintenant la stabilité et la performance du cluster.
