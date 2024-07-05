@@ -11,6 +11,10 @@ Assurez-vous que Minikube est démarré :
 ```bash
 minikube start
 ```
+Exécutez sur une autre ligne de commande
+```bash
+minikube dashboard
+```
 
 ### Étape 2: Créer un Namespace
 Créez un namespace pour isoler vos ressources :
@@ -29,7 +33,8 @@ Si `--replicas` n'est pas disponible directement dans `kubectl create deployment
 kubectl create deployment nginx-deployment --image=nginx -n demo-namespace
 kubectl scale deployment/nginx-deployment --replicas=3 -n demo-namespace
 ```
-
+- Obserrvez le dashboard
+  
 ### Étape 4: Vérifier les Pods
 Pour voir les pods dans le namespace spécifique :
 ```bash
@@ -41,7 +46,8 @@ Choisissez un pod et supprimez-le pour simuler une panne :
 ```bash
 kubectl delete pod <nom-du-pod> -n demo-namespace
 ```
-
+- Obserrvez le dashboard
+  
 ### Étape 6: Observer la Recréation du Pod
 Kubernetes va automatiquement recréer le pod pour maintenir le nombre de réplicas désirés :
 ```bash
