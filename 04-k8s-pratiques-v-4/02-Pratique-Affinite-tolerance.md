@@ -6,11 +6,11 @@
    - [Qu'est-ce qu'une Tolérance ?](#quest-ce-quune-tolérance)
 3. [Exercices Pratiques](#exercices-pratiques)
    - [Exercice 1 : Maîtrise des Taints et Tolérances dans Kubernetes](#exercice-1--maîtrise-des-taints-et-tolérances-dans-kubernetes)
-   - [Exercice 2 : Comprendre et Appliquer `requiredDuringSchedulingIgnoredDuringExecution`](#exercice-2-comprendre-et-appliquer-requiredduringschedulingignoredduringexecution)
-   - [Exercice 3 : Mise en Pratique de `preferredDuringSchedulingIgnoredDuringExecution`](#exercice-3-mise-en-pratique-de-preferredduringschedulingignoredduringexecution)
-   - [Exercice 4 : Exploration de `requiredDuringSchedulingRequiredDuringExecution`](#exercice-4-exploration-de-requiredduringschedulingrequiredduringexecution)
-   - [Exercice 5 : Pratique de Node Selector et Node Affinity](#exercice-5-pratique-de-node-selector-et-node-affinity)
-   - [Exercice 6 : Compréhension des Concepts de Taints et Tolérances](#exercice-6-compréhension-des-concepts-de-taints-et-tolérances)
+   - [Exercice 2 : Comprendre et Appliquer `requiredDuringSchedulingIgnoredDuringExecution`](#exercice-2--comprendre-et-appliquer-requiredduringschedulingignoredduringexecution)
+   - [Exercice 3 : Mise en Pratique de `preferredDuringSchedulingIgnoredDuringExecution`](#exercice-3--mise-en-pratique-de-preferredduringschedulingignoredduringexecution)
+   - [Exercice 4 : Exploration de `requiredDuringSchedulingRequiredDuringExecution`](#exercice-4--exploration-de-requiredduringschedulingrequiredduringexecution)
+   - [Exercice 5 : Pratique de Node Selector et Node Affinity](#exercice-5--pratique-de-node-selector-et-node-affinity)
+   - [Exercice 6 : Compréhension des Concepts de Taints et Tolérances](#exercice-6--compréhension-des-concepts-de-taints-et-tolérances)
 4. [Conclusion](#conclusion)
 
 ## Introduction
