@@ -1,0 +1,2 @@
+- https://stackoverflow.com/questions/72147700/deleting-minikube-cluster-so-i-can-create-a-larger-cluster-with-more-cpus
+- https://github.com/DeekshithSN
