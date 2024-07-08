@@ -1,5 +1,6 @@
 ### Commandes pour le TP avec Minikube
 
+# Exemple 1
 #### Étape 1 : Préparation de l'Environnement
 
 **Installer Minikube**
@@ -245,5 +246,129 @@ Pour utiliser ce script :
 1. Sauvegardez-le dans un fichier, par exemple `deploy_app.sh`.
 2. Rendez-le exécutable avec la commande `chmod +x deploy_app.sh`.
 3. Exécutez le script avec `./deploy_app.sh`.
+
+N'oubliez pas de remplacer `votre_nom_utilisateur_docker_hub` par votre nom d'utilisateur Docker Hub et de spécifier le namespace correct lors du nettoyage.
+
+# Exemple 2
+
+Voici un autre exemple de script shell, cette fois en utilisant Apache2 :
+
+```bash
+#!/bin/bash
+
+# Étape 1 : Préparation de l'Environnement
+
+# Installer Minikube
+# Téléchargez et installez Minikube
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && sudo install minikube-linux-amd64 /usr/local/bin/minikube
+
+# Démarrer Minikube
+minikube start
+
+# Étape 2 : Création et Poussée de l'Image Docker
+
+# Créer un fichier Dockerfile pour Apache2
+echo "FROM ubuntu:20.04
+
+# Installer Apache2
+RUN apt-get update && \
+    apt-get install -y apache2 && \
+    apt-get clean
+
+# Copier le fichier HTML dans le répertoire approprié
+COPY ./index.html /var/www/html/
+
+# Exposer le port 80
+EXPOSE 80
+
+# Démarrer Apache2 en avant-plan
+CMD [\"/usr/sbin/apache2ctl\", \"-D\", \"FOREGROUND\"]" > Dockerfile
+
+# Créer un fichier index.html
+echo "<!DOCTYPE html>
+<html lang=\"en\">
+<head>
+    <meta charset=\"UTF-8\">
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+    <title>Mon Application Apache2</title>
+</head>
+<body>
+    <h1>Bienvenue sur mon site web Apache2 déployé avec Docker et Kubernetes</h1>
+</body>
+</html>" > index.html
+
+# Construire l'image Docker
+# Remplacez 'votre_nom_utilisateur_docker_hub' par votre nom d'utilisateur Docker Hub
+docker build -t votre_nom_utilisateur_docker_hub/mon-apache2-application:v1 .
+
+# Connexion à Docker Hub
+docker login
+
+# Pousser l'image sur Docker Hub
+docker push votre_nom_utilisateur_docker_hub/mon-apache2-application:v1
+
+# Étape 3 : Déploiement sur Kubernetes avec Minikube
+
+# Créer le fichier deployment.yaml
+echo "apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mon-apache2-application
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mon-apache2-application
+  template:
+    metadata:
+      labels:
+        app: mon-apache2-application
+    spec:
+      containers:
+      - name: mon-apache2-application
+        image: votre_nom_utilisateur_docker_hub/mon-apache2-application:v1
+        ports:
+        - containerPort: 80" > deployment.yaml
+
+# Créer le fichier service.yaml
+echo "apiVersion: v1
+kind: Service
+metadata:
+  name: mon-apache2-application-service
+spec:
+  type: NodePort
+  selector:
+    app: mon-apache2-application
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30007" > service.yaml
+
+# Appliquer les fichiers YAML
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+
+# Vérifier le déploiement
+kubectl get pods
+
+# Obtenir l'URL de l'application
+minikube service mon-apache2-application-service --url
+
+# Nettoyage
+
+# Supprimer le namespace (remplacez <votre_namespace> par votre namespace)
+# kubectl delete namespace <votre_namespace>
+
+# Arrêter Minikube
+minikube stop
+
+# Supprimer Minikube
+minikube delete
+```
+
+Pour utiliser ce script :
+1. Sauvegardez-le dans un fichier, par exemple `deploy_apache2.sh`.
+2. Rendez-le exécutable avec la commande `chmod +x deploy_apache2.sh`.
+3. Exécutez le script avec `./deploy_apache2.sh`.
 
 N'oubliez pas de remplacer `votre_nom_utilisateur_docker_hub` par votre nom d'utilisateur Docker Hub et de spécifier le namespace correct lors du nettoyage.
