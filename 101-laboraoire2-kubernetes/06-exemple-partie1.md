@@ -372,3 +372,131 @@ Pour utiliser ce script :
 3. Exécutez le script avec `./deploy_apache2.sh`.
 
 N'oubliez pas de remplacer `votre_nom_utilisateur_docker_hub` par votre nom d'utilisateur Docker Hub et de spécifier le namespace correct lors du nettoyage.
+
+# Exemple 3
+
+Voici un exemple de script pour déployer une application Flask en utilisant Docker et Kubernetes avec Minikube, en utilisant l'image de base Alpine Linux.
+
+### Script pour déployer une application Flask
+
+```bash
+#!/bin/bash
+
+# Étape 1 : Préparation de l'Environnement
+
+# Installer Minikube
+# Téléchargez et installez Minikube
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && sudo install minikube-linux-amd64 /usr/local/bin/minikube
+
+# Démarrer Minikube
+minikube start
+
+# Étape 2 : Création et Poussée de l'Image Docker
+
+# Créer un fichier Dockerfile pour Flask sur Alpine
+echo "FROM python:3.9-alpine
+
+# Installer Flask
+RUN pip install flask
+
+# Copier l'application Flask
+COPY ./app /app
+
+# Définir le répertoire de travail
+WORKDIR /app
+
+# Exposer le port 5000
+EXPOSE 5000
+
+# Démarrer l'application Flask
+CMD [\"python\", \"app.py\"]" > Dockerfile
+
+# Créer un répertoire pour l'application Flask
+mkdir app
+
+# Créer un fichier app.py pour l'application Flask
+echo "from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    return 'Hello, World! This is a Flask app running on Alpine Linux.'
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)" > app/app.py
+
+# Construire l'image Docker
+# Remplacez 'votre_nom_utilisateur_docker_hub' par votre nom d'utilisateur Docker Hub
+docker build -t votre_nom_utilisateur_docker_hub/flask-app:v1 .
+
+# Connexion à Docker Hub
+docker login
+
+# Pousser l'image sur Docker Hub
+docker push votre_nom_utilisateur_docker_hub/flask-app:v1
+
+# Étape 3 : Déploiement sur Kubernetes avec Minikube
+
+# Créer le fichier deployment.yaml
+echo "apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-app
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: flask-app
+  template:
+    metadata:
+      labels:
+        app: flask-app
+    spec:
+      containers:
+      - name: flask-app
+        image: votre_nom_utilisateur_docker_hub/flask-app:v1
+        ports:
+        - containerPort: 5000" > deployment.yaml
+
+# Créer le fichier service.yaml
+echo "apiVersion: v1
+kind: Service
+metadata:
+  name: flask-app-service
+spec:
+  type: NodePort
+  selector:
+    app: flask-app
+  ports:
+    - port: 5000
+      targetPort: 5000
+      nodePort: 30008" > service.yaml
+
+# Appliquer les fichiers YAML
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+
+# Vérifier le déploiement
+kubectl get pods
+
+# Obtenir l'URL de l'application
+minikube service flask-app-service --url
+
+# Nettoyage
+
+# Supprimer le namespace (remplacez <votre_namespace> par votre namespace)
+# kubectl delete namespace <votre_namespace>
+
+# Arrêter Minikube
+minikube stop
+
+# Supprimer Minikube
+minikube delete
+```
+
+Pour utiliser ce script :
+1. Sauvegardez-le dans un fichier, par exemple `deploy_flask.sh`.
+2. Rendez-le exécutable avec la commande `chmod +x deploy_flask.sh`.
+3. Exécutez le script avec `./deploy_flask.sh`.
+
+N'oubliez pas de remplacer `votre_nom_utilisateur_docker_hub` par votre nom d'utilisateur Docker Hub et de spécifier le namespace correct lors du nettoyage.
