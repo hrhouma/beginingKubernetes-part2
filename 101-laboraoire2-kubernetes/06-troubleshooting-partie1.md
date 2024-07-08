@@ -10,6 +10,8 @@
 
 ----
 # Troubleshooting partie 1
+
+```ssh
 # Étape 1 : Vérifier les Logs des Pods
 kubectl logs <nom_du_pod>
 # Étape 2 : Vérifier l'État du Pod
@@ -30,6 +32,7 @@ kubectl apply -f service.yaml
 # Étape 7 : Vérification Finale
 kubectl get pods
 kubectl get deployments
+```
 
 # RÉSULTAT !!! ==> Le problème persiste
 
