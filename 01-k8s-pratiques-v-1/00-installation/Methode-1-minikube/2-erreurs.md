@@ -8,5 +8,6 @@
 - minikube profile list
 - minikube delete --profile minikube
 - minikube start --vm-driver=virtualbox --cpus 8 --memory 16g
+- https://stackoverflow.com/questions/70813386/how-to-resolve-minikube-start-error-this-computer-doesnt-have-vt-x-amd-v-enab
 
 
