@@ -1,1 +1,2 @@
 - https://github.com/hrhouma/deploiement/blob/main/5-Evaluation-formative/partie1.md
+- https://github.com/hrhouma/beginingKubernetes-part2/blob/main/103-laboratoite04-docker-compose/partie1-important.md
