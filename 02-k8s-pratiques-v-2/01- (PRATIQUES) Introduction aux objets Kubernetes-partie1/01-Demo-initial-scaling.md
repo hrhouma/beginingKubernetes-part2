@@ -107,7 +107,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:latest
+        image: nginx:1.14.2
         ports:
         - containerPort: 80
 ```
