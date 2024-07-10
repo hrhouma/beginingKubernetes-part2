@@ -1,6 +1,8 @@
 ### Commandes pour le TP avec Minikube
-
+🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇
 # Exemple 1
+🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇
+
 #### Étape 1 : Préparation de l'Environnement
 
 **Installer Minikube**
@@ -140,7 +142,7 @@ Ces commandes vous permettront de réaliser toutes les étapes nécessaires pour
 
 # Résumé: 
 
-Voici un exemple de fichier de script shell contenant toutes les commandes nécessaires avec les descriptions en commentaires :
+- Exemple de fichier de script shell contenant toutes les commandes nécessaires avec les descriptions en commentaires :
 
 ```bash
 #!/bin/bash
@@ -249,9 +251,11 @@ Pour utiliser ce script :
 
 N'oubliez pas de remplacer `votre_nom_utilisateur_docker_hub` par votre nom d'utilisateur Docker Hub et de spécifier le namespace correct lors du nettoyage.
 
+🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇
 # Exemple 2
+🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇
 
-Voici un autre exemple de script shell, cette fois en utilisant Apache2 :
+- Autre exemple de script shell, cette fois en utilisant Apache2 :
 
 ```bash
 #!/bin/bash
@@ -373,9 +377,11 @@ Pour utiliser ce script :
 
 N'oubliez pas de remplacer `votre_nom_utilisateur_docker_hub` par votre nom d'utilisateur Docker Hub et de spécifier le namespace correct lors du nettoyage.
 
+🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇
 # Exemple 3
+🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇
 
-Voici un exemple de script pour déployer une application Flask en utilisant Docker et Kubernetes avec Minikube, en utilisant l'image de base Alpine Linux.
+- Autre exemple de script pour déployer une application Flask en utilisant Docker et Kubernetes avec Minikube, en utilisant l'image de base Alpine Linux.
 
 ### Script pour déployer une application Flask
 
