@@ -289,6 +289,7 @@ kind delete cluster --name kind-1
 kind delete cluster --name kind-2
 ```
 
-# kubectl config get-contexts
-# kubectl config current-context
-# kubectl config use-context <NOM-DE-VOTRE-CONTEXTE>
+## kubectl config get-contexts
+## kubectl config current-context
+## kubectl config use-context <NOM-DE-VOTRE-CONTEXTE>
+## kubectl cluster-info --context kind-kind-1
