@@ -153,5 +153,5 @@ Dans `vi`, tapez `:wq` pour sauvegarder et quitter.
 ---
 
 Ce guide couvre toutes les étapes nécessaires pour télécharger, configurer et démarrer Prometheus et Node Exporter, ainsi que pour accéder aux interfaces web correspondantes et exécuter des requêtes de métriques spécifiques.
-```
+
 
