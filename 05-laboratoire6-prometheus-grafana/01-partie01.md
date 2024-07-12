@@ -1,6 +1,3 @@
-### README.md
-
-```markdown
 # Configuration et Déploiement de Prometheus et Node Exporter
 
 Ce guide décrit les étapes pour télécharger, configurer et déployer Prometheus et Node Exporter sur un système Linux.
