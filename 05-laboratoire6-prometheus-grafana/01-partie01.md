@@ -1,8 +1,8 @@
 # Configuration et Déploiement de Prometheus et Node Exporter
 
 Ce guide décrit les étapes pour télécharger, configurer et déployer Prometheus et Node Exporter sur un système Linux.
-
-## Prérequis
+---
+# Prérequis
 
 - Système d'exploitation Linux
 - Accès à Internet
@@ -61,7 +61,8 @@ Dans `vi`, tapez `:wq` pour sauvegarder et quitter.
 - URL des métriques : `http://localhost:9090/metrics`
 - URL des graphiques : `http://localhost:9090/graph`
 
-## Téléchargement et Configuration de Node Exporter
+---
+# Téléchargement et Configuration de Node Exporter
 
 ### 1. Extraire le contenu de l'archive tar pour Node Exporter
 
@@ -91,7 +92,8 @@ less nohup.out
 
 - URL : `http://localhost:9100/metrics`
 
-## Ajouter la configuration pour Node Exporter dans Prometheus
+---
+# Ajouter la configuration pour Node Exporter dans Prometheus
 
 ### 1. Naviguer dans le répertoire Prometheus
 
@@ -127,15 +129,16 @@ Dans `vi`, tapez `:wq` pour sauvegarder et quitter.
 ```bash
 ./prometheus
 ```
-
-## Utilisation de l'interface web de Prometheus
+---
+# Utilisation de l'interface web de Prometheus
 
 ### Accéder aux métriques et vérifier les cibles
 
 - URL des cibles (Targets) : `http://localhost:9090/targets`
 - URL des métriques : `http://localhost:9090/metrics`
 
-### Requêtes de métriques spécifiques dans Prometheus
+---
+# Requêtes de métriques spécifiques dans Prometheus
 
 - Utiliser la barre de recherche sous l'onglet **Graph** et exécuter des requêtes comme `node_cpu`.
 
@@ -144,4 +147,3 @@ Dans `vi`, tapez `:wq` pour sauvegarder et quitter.
 Ce guide couvre toutes les étapes nécessaires pour télécharger, configurer et démarrer Prometheus et Node Exporter, ainsi que pour accéder aux interfaces web correspondantes et exécuter des requêtes de métriques spécifiques.
 ```
 
-Avec ce fichier README.md, vous avez toutes les instructions nécessaires pour installer et configurer Prometheus et Node Exporter de A à Z.
