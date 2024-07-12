@@ -2,13 +2,19 @@
 
 Ce guide décrit les étapes pour télécharger, configurer et déployer Prometheus et Node Exporter sur un système Linux.
 ---
-# Prérequis
+🥇🥇🥇🥇🥇🥇🥇🥇
+# PARTIE1 - Prérequis
+🥇🥇🥇🥇🥇🥇🥇🥇
 
 - Système d'exploitation Linux
 - Accès à Internet
 - Privilèges root ou sudo
 
-## Téléchargement et Configuration de Prometheus
+----
+🥇🥇🥇🥇🥇🥇🥇🥇
+# PARTIE2 - Téléchargement et Configuration de Prometheus
+🥇🥇🥇🥇🥇🥇🥇🥇
+
 
 ### 1. Télécharger Prometheus
 
@@ -93,8 +99,9 @@ less nohup.out
 - URL : `http://localhost:9100/metrics`
 
 ---
-# Ajouter la configuration pour Node Exporter dans Prometheus
-
+🥇🥇🥇🥇🥇🥇🥇🥇
+# PARTIE3 - Ajouter la configuration pour Node Exporter dans Prometheus
+🥇🥇🥇🥇🥇🥇🥇🥇
 ### 1. Naviguer dans le répertoire Prometheus
 
 ```bash
@@ -130,8 +137,9 @@ Dans `vi`, tapez `:wq` pour sauvegarder et quitter.
 ./prometheus
 ```
 ---
-# Utilisation de l'interface web de Prometheus
-
+🥇🥇🥇🥇🥇🥇🥇🥇
+# PARTIE4 - Utilisation de l'interface web de Prometheus
+🥇🥇🥇🥇🥇🥇🥇🥇
 ### Accéder aux métriques et vérifier les cibles
 
 - URL des cibles (Targets) : `http://localhost:9090/targets`
