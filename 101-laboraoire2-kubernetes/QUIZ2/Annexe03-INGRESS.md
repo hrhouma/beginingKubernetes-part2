@@ -568,4 +568,14 @@ Cette configuration permet de router efficacement le trafic entrant vers les app
 
 ---
 
-En espérant que ce cours détaillé sur Ingress dans Kubernetes vous sera utile pour maîtriser la gestion de l'accès externe dans Kubernetes. 
+- Ingress ==> maîtriser la gestion de l'accès externe dans Kubernetes.
+
+# Références :
+
+- https://medium.com/devops-mojo/kubernetes-ingress-overview-what-is-kubernetes-ingress-introduction-to-k8s-ingress-b0f81525ffe2
+- https://medium.com/@muppedaanvesh/a-hands-on-guide-to-kubernetes-ingress-nginx-7c4c5b45eb89
+- https://thekubeguy.com/kubernetes-load-balancers-and-ingress-controllers-3e0f4fdabcfe
+- https://overcast.blog/kubernetes-ingress-controllers-and-ingress-resources-a-practical-guide-7a709dec3e4b
+- https://aws.plainenglish.io/kubernetes-ingress-controllers-2d91162450ac
+- https://blog.devops.dev/kubernetes-ingress-how-to-use-an-ingress-controller-with-your-kubernetes-applications-359dffd465f8
+
