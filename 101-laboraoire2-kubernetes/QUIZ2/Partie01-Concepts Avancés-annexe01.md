@@ -337,4 +337,6 @@ kubectl get networkpolicy -n echo
 
 ---
 
-En suivant ce cours, vous serez bien préparé pour répondre aux questions du quiz. Kubernetes est un outil puissant pour la gestion des conteneurs, et la maîtrise de ces concepts avancés vous permettra de tirer pleinement parti de ses capacités. Bonne chance dans votre apprentissage et lors de votre quiz !
+- En suivant ce cours, vous serez bien préparé pour répondre aux questions du quiz.
+- Kubernetes est un outil puissant pour la gestion des conteneurs, et la maîtrise de ces concepts avancés vous permettra de tirer pleinement parti de ses capacités.
+Bonne chance dans votre apprentissage et lors de votre quiz !
