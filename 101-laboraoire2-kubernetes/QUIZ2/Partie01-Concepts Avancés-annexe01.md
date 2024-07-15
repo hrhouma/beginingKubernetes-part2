@@ -1,6 +1,9 @@
 ### Cours : Concepts Avancés de Kubernetes
 
-Bienvenue à ce cours sur les concepts avancés de Kubernetes. Nous allons explorer plusieurs sujets importants tels que les PersistentVolumes, PersistentVolumeClaims, ConfigMaps, sélecteurs de nœud, mise à l'échelle des déploiements, et NetworkPolicies. Ce cours est conçu pour vous fournir les connaissances nécessaires pour répondre aux questions du quiz avec confiance. Chaque section inclut un exemple détaillé pour faciliter votre compréhension.
+- Bienvenue à cet annexe sur les concepts avancés de Kubernetes. 
+- Nous allons explorer plusieurs sujets importants tels que les PersistentVolumes, PersistentVolumeClaims, ConfigMaps, sélecteurs de nœud, mise à l'échelle des déploiements, et NetworkPolicies.
+- Cet annexe est conçu pour vous fournir les connaissances nécessaires pour répondre aux questions du quiz avec confiance.
+- Chaque section inclut un exemple détaillé pour faciliter votre compréhension.
 
 ---
 
