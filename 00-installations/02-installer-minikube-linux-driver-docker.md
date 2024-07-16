@@ -1,6 +1,12 @@
-# Références : 
+🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇
+# 1 - Références : 
+🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇
 - https://schoolofdevops.github.io/kubernetes-the-hard-way/02-client-tools/
 - https://medium.com/@areesmoon/installing-minikube-on-ubuntu-20-04-lts-focal-fossa-b10fad9d0511
+
+🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇
+# 2 - Commandes : 
+🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇
 
 ```bash
 su
@@ -33,6 +39,9 @@ minikube status
 kubectl cluster-info
 kubectl get nodes
 ```
+🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇
+# 3 - ANNEXE 1 - DÉTAILS : 
+🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇
 
 **Vue d'ensemble**
 
@@ -158,7 +167,10 @@ kubectl get nodes
 
 Ces commandes couvrent l'installation de Docker (prérequis pour Minikube), la mise à jour des paquets système, l'installation de Minikube, la mise en place de `kubectl`, le démarrage de Minikube, et les vérifications pour s'assurer que tout fonctionne correctement.
 
-# ANNEXE2 : 
+🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇
+# 4 - ANNEXE 2 : PERSPECTIVES
+🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇
+ 
 
 - Dans le prochain article, nous apprendrons à configurer Minikube et à accéder au tableau de bord Minikube à distance ==> https://medium.com/@areesmoon/installing-minikube-on-ubuntu-20-04-lts-focal-fossa-b10fad9d0511
 
