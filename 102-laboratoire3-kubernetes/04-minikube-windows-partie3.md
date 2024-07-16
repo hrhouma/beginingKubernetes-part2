@@ -1,5 +1,3 @@
-Pour exécuter les fichiers YAML que vous avez téléchargés et remplacer le processus décrit, voici les commandes adaptées à votre contexte en utilisant les fichiers fournis :
-
 ### Étape 1 : Démarrage de Minikube
 
 Démarrons par créer un cluster Kubernetes avec Minikube, si ce n'est pas déjà fait.
