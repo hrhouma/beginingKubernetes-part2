@@ -2,6 +2,23 @@
 - https://schoolofdevops.github.io/kubernetes-the-hard-way/02-client-tools/
 - https://medium.com/@areesmoon/installing-minikube-on-ubuntu-20-04-lts-focal-fossa-b10fad9d0511
 
+```bash
+sudo apt update
+sudo apt install -y curl wget apt-transport-https
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+minikube version
+wget https://storage.googleapis.com/kubernetes-release/release/v1.15.3/bin/linux/amd64/kubectl
+chmod +x kubectl
+sudo mv kubectl /usr/local/bin/
+kubectl version -o yaml
+minikube start --driver=docker
+minikube start --driver=docker --force
+minikube status
+kubectl cluster-info
+kubectl get nodes
+```
+
 **Vue d'ensemble**
 
 - Avant de parler de Minikube, il est important de comprendre ce qu'est Kubernetes, car Minikube est une forme de Kubernetes souvent utilisée.
@@ -81,4 +98,53 @@ Utilisez la commande suivante pour tester Kubernetes :
 ```bash
 kubectl get nodes
 ```
-Dans le prochain article, nous apprendrons à configurer Minikube et à accéder au tableau de bord Minikube à distance.
+
+# ANNEXE 1 : 
+
+### Étapes d'installation de Minikube et Kubernetes
+
+**1. Installation de Docker**
+```bash
+# Installer Docker (voir instructions spécifiques à Ubuntu 20.04 LTS Focal Fossa)
+```
+
+**2. Mise à jour des paquets système et installation des dépendances de Minikube**
+```bash
+sudo apt update
+sudo apt install -y curl wget apt-transport-https
+```
+
+**3. Installation de Minikube**
+```bash
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+```
+
+**4. Installation de l'utilitaire kubectl**
+```bash
+wget https://storage.googleapis.com/kubernetes-release/release/v1.15.3/bin/linux/amd64/kubectl
+chmod +x kubectl
+sudo mv kubectl /usr/local/bin/
+```
+
+**5. Démarrage de Minikube**
+```bash
+minikube start --driver=docker
+# En cas d'erreur avec le pilote Docker
+minikube start --driver=docker --force
+```
+
+**6. Vérification de l'installation**
+```bash
+minikube status
+kubectl cluster-info
+kubectl get nodes
+```
+
+Ces commandes couvrent l'installation de Docker (prérequis pour Minikube), la mise à jour des paquets système, l'installation de Minikube, la mise en place de `kubectl`, le démarrage de Minikube, et les vérifications pour s'assurer que tout fonctionne correctement.
+
+# ANNEXE2 : 
+
+- Dans le prochain article, nous apprendrons à configurer Minikube et à accéder au tableau de bord Minikube à distance ==> https://medium.com/@areesmoon/installing-minikube-on-ubuntu-20-04-lts-focal-fossa-b10fad9d0511
+
+
