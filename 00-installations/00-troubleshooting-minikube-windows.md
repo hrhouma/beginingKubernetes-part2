@@ -61,12 +61,12 @@ minikube start --vm-driver=virtualbox --cpus 8 --memory 16g --no-vtx-check
 
 # Commandes utiles
 
-     ```bash
-     minikube delete
-     minikube start --driver=virtualbox
-     minikube start --driver=virtualbox --cpus=4 --memory=4096
-     minikube logs
-     ```
+```bash
+minikube delete
+minikube start --driver=virtualbox
+minikube start --driver=virtualbox --cpus=4 --memory=4096
+minikube logs
+```
 
 ```bash
 minikube start --driver=virtualbox --no-vtx-check
