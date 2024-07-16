@@ -59,3 +59,19 @@ minikube start --vm-driver=virtualbox --cpus 8 --memory 16g --no-vtx-check
 - https://stackoverflow.com/questions/70813386/how-to-resolve-minikube-start-error-this-computer-doesnt-have-vt-x-amd-v-enab
 
 
+# Commandes utiles
+
+     ```bash
+     minikube delete
+     minikube start --driver=virtualbox
+     minikube start --driver=virtualbox --cpus=4 --memory=4096
+     minikube logs
+     ```
+
+```bash
+minikube start --driver=virtualbox --no-vtx-check
+minikube profile list
+minikube delete --profile minikube
+minikube start --vm-driver=virtualbox --cpus 8 --memory 16g
+minikube start --vm-driver=virtualbox --cpus 8 --memory 16g --no-vtx-check
+```
