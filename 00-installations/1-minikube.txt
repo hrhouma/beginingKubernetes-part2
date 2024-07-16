@@ -1,0 +1,152 @@
+*****************************************************************************
+==================>      Étape 1 :
+*****************************************************************************
+Installer kubectl sur windows 
+https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/
+
+
+1.1. Télécharger kubectl dans C:\Users\hrehouma\Documents\kubectl
+
+curl.exe -LO "https://dl.k8s.io/release/v1.30.0/bin/windows/amd64/kubectl.exe"
+
+1.2. Télécharger ubectl.exe.sha256 pour valider les binaires
+
+curl.exe -LO "https://dl.k8s.io/v1.30.0/bin/windows/amd64/kubectl.exe.sha256"
+
+1.3.Valider les binaires
+
+CertUtil -hashfile kubectl.exe SHA256
+
+type kubectl.exe.sha256
+
+1.4. Tester l'outil kubectl avant de l'ajouter au path
+
+
+kubectl version --client
+
+kubectl version --client --output=yaml
+
+1.5. Ajouter kubectl au path
+
+==> Ouvrir variables d'environnement
+==> Ajouter cette ligne au PATH : C:\Users\hrehouma\Documents\kubectl
+
+Vous pouvez fermer et réouvrir la ligne de commande pour que les modifications prennent effet !
+
+1.6. 
+
+cd %USERPROFILE%  (par exemple, ça me ramene à mon répertoire d'utilisateur C:\Users\hrehouma)
+Vérifier si vous avez .kube sinon le créer 
+
+mkdir .kube
+cd .kube
+powershell
+New-Item config -type file
+
+
+1.7. Vérification finale
+
+
+kubectl cluster-info
+kubectl cluster-info dump
+
+!!!! Attention, ces commandes peuvent ne pas fonctionner étant donné que nous n'avons pas encore crée de cluser.
+
+
+
+1.8. Vérification finale 
+
+Fermer la ligne de commande et réouvrir
+kubectl version --client
+kubectl version --client --output=yaml
+
+
+*****************************************************************************
+==================>      Étape 2 :
+*****************************************************************************
+
+Installer minikube sur windows
+https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download
+
+
+
+2.1. Créer un dossier minikube dans Documents
+
+C:\Users\hrehouma\Documents\minikube
+
+écrire cmd ensuite powershell
+
+2.2. Création et téléchargement de minikube dans le dossier C:\minikube (C'est automatique avec poswershell) , ne le faites pas manuellement, juste exécutez les commandes 
+
+New-Item -Path 'c:\' -Name 'minikube' -ItemType Directory -Force
+Invoke-WebRequest -OutFile 'c:\minikube\minikube.exe' -Uri 'https://github.com/kubernetes/minikube/releases/latest/download/minikube-windows-amd64.exe' -UseBasicParsing
+
+2.3. ajout au path C:\minikube
+
+==> Méthode 1 (aller au varaibles d'environnement et ajouter dans PATH (C:\minikube)
+
+==> Méthode 2 (avec powershell, manière plus élégante)
+
+$oldPath = [Environment]::GetEnvironmentVariable('Path', [EnvironmentVariableTarget]::Machine)
+
+
+if ($oldPath.Split(';') -inotcontains 'C:\minikube'){
+  [Environment]::SetEnvironmentVariable('Path', $('{0};C:\minikube' -f $oldPath), [EnvironmentVariableTarget]::Machine)
+}
+
+2.4. Vérifier votre PATH (C:\minikube est ajouté au path)
+
+ligne de cmd : écrier path et chercher C:\minikube
+
+
+*****************************************************************************
+==================>      Étape 3 : Démarrer un cluser
+*****************************************************************************
+
+minikube start
+
+PS C:\Users\hrehouma\Documents\minikube> minikube start
+
+
+
+kubectl get po -A
+minikube kubectl -- get po -A
+============> alias kctl="minikube kubectl" (à déboguer)
+
+minikube dashboard (laisser le dashborad ouvert, excécuter cette commande dans un nouvel terminal cmd)
+
+
+
+*****************************************************************************
+==================>      Étape 4 : Tests
+*****************************************************************************
+
+La liste de commandes se trouvent ici dans les sections 3 et 4 :
+https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download
+
+kubectl get po -A
+minikube kubectl -- get po -A
+alias kubectl="minikube kubectl --"
+minikube dashboard
+
+PARAGRAPHE 4 Deploy 
+
+4.1. TESTEZ SERVICE
+4.2. TESTEZ LOADBALANCER
+4.3. TESTEZ INGRESS
+
+
+*****************************************************************************
+==================>      Étape 5 : Arrêter, pauser et redémarrer le cluster
+*****************************************************************************
+
+PARAGRAPHE 5 Manage your cluster
+
+
+minikube pause
+minikube unpause
+minikube stop
+minikube config set memory 9001
+minikube addons list
+minikube start -p aged --kubernetes-version=v1.16.1
+minikube delete --all
