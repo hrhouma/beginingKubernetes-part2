@@ -127,6 +127,7 @@ subjects:
 Appliquer le fichier :
 
 ```bash
+kubectl create namespace kubernetes-dashboard
 kubectl apply -f dashboard-adminuser.yml
 ```
 
