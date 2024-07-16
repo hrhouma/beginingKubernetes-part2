@@ -7,6 +7,12 @@ minikube delete --profile minikube
 minikube start --vm-driver=virtualbox --cpus 8 --memory 16g
 minikube start --vm-driver=virtualbox --cpus 8 --memory 16g --no-vtx-check
 ```
+```bash
+minikube delete
+minikube start --driver=virtualbox
+minikube start --driver=virtualbox --cpus=4 --memory=4096
+minikube logs
+```
 
 1. **Démarrer Minikube avec VirtualBox sans vérification VT-x/AMD-v** :
    ```bash
