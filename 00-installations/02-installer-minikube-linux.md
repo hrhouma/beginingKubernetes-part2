@@ -3,6 +3,21 @@
 - https://medium.com/@areesmoon/installing-minikube-on-ubuntu-20-04-lts-focal-fossa-b10fad9d0511
 
 ```bash
+su
+#ou sudo -s
+pwd
+git clone https://github.com/hrhouma/install-docker.git
+cd install-docker/
+chmod +x install-docker.sh
+./install-docker.sh
+#ou sh install-docker.sh
+docker version
+docker compose version
+apt-install docker-compose
+docker-compose version
+```
+
+```bash
 sudo apt update
 sudo apt install -y curl wget apt-transport-https
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
