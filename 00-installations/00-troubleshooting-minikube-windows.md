@@ -13,6 +13,14 @@ minikube start --driver=virtualbox
 minikube start --driver=virtualbox --cpus=4 --memory=4096
 minikube logs
 ```
+```bash
+minikube start --driver=docker --v=7 --alsologtostderr
+minikube start --driver=docker --addons=false
+minikube start --driver=docker --validate=false
+minikube delete
+minikube start --driver=docker
+```
+
 
 1. **Démarrer Minikube avec VirtualBox sans vérification VT-x/AMD-v** :
    ```bash
