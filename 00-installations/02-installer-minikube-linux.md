@@ -3,20 +3,24 @@
 - https://medium.com/@areesmoon/installing-minikube-on-ubuntu-20-04-lts-focal-fossa-b10fad9d0511
 
 **Vue d'ensemble**
-Avant de parler de Minikube, il est important de comprendre ce qu'est Kubernetes, car Minikube est une forme de Kubernetes souvent utilisée.
 
-Kubernetes est une plateforme open source portable et extensible pour la gestion de charges de travail et de services conteneurisés, qui facilite la configuration déclarative et l'automatisation. En d'autres termes, Kubernetes est un gestionnaire de conteneurs qui gère plusieurs conteneurs pour fournir un service cohérent et évite que le service ne tombe en panne ou soit surchargé en répartissant les charges de manière équilibrée sur tous les conteneurs. Simplement, Kubernetes est un gestionnaire multi-service. Pour plus d'informations sur Kubernetes, veuillez consulter le concept sur son site officiel : [https://kubernetes.io/docs/concepts/overview/](https://kubernetes.io/docs/concepts/overview/).
+- Avant de parler de Minikube, il est important de comprendre ce qu'est Kubernetes, car Minikube est une forme de Kubernetes souvent utilisée.
 
-Minikube est une implémentation légère de Kubernetes qui crée une VM sur votre machine locale et déploie un cluster simple contenant un seul nœud (nœud = machine/serveur). Minikube est disponible pour les systèmes Linux, macOS et Windows. Minikube est le type de Kubernetes le plus simple et le plus facile à utiliser si vous n'avez qu'un seul serveur à faire fonctionner.
+- Kubernetes est une plateforme open source portable et extensible pour la gestion de charges de travail et de services conteneurisés, qui facilite la configuration déclarative et l'automatisation. En d'autres termes, Kubernetes est un gestionnaire de conteneurs qui gère plusieurs conteneurs pour fournir un service cohérent et évite que le service ne tombe en panne ou soit surchargé en répartissant les charges de manière équilibrée sur tous les conteneurs. Simplement, Kubernetes est un gestionnaire multi-service. Pour plus d'informations sur Kubernetes, veuillez consulter le concept sur son site officiel : [https://kubernetes.io/docs/concepts/overview/](https://kubernetes.io/docs/concepts/overview/).
+
+- Minikube est une implémentation légère de Kubernetes qui crée une VM sur votre machine locale et déploie un cluster simple contenant un seul nœud (nœud = machine/serveur). Minikube est disponible pour les systèmes Linux, macOS et Windows. Minikube est le type de Kubernetes le plus simple et le plus facile à utiliser si vous n'avez qu'un seul serveur à faire fonctionner.
 
 **Prérequis**
+
 Un serveur fonctionnant sous l'un des systèmes d'exploitation suivants : Ubuntu 22.04, 20.04, 18.04, 16.04 ou toute autre distribution basée sur Debian comme Linux Mint
 Il est recommandé d'utiliser un système d'exploitation fraîchement installé pour éviter tout problème inattendu
 Accès à l'utilisateur root
 
 **Étapes d'installation**
+
 **Étape 1. Installation de Docker**
-Dans cet article, nous utiliserons Docker comme base pour Minikube. Si Docker n'est pas encore installé sur votre système Ubuntu, utilisez le lien suivant pour l'installer : Installer Docker sur Ubuntu 20.04 LTS (Focal Fossa)
+
+- Dans cet article, nous utiliserons Docker comme base pour Minikube. Si Docker n'est pas encore installé sur votre système Ubuntu, utilisez le lien suivant pour l'installer : Installer Docker sur Ubuntu 20.04 LTS (Focal Fossa)
 
 **Étape 2. Mise à jour des paquets système et installation des dépendances de Minikube**
 ```bash
