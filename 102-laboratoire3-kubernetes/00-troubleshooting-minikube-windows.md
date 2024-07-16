@@ -1,5 +1,3 @@
-Voici une séquence de commandes pour gérer Minikube avec VirtualBox, en tenant compte des différents paramètres et options que vous pourriez vouloir ajuster :
-
 1. **Démarrer Minikube avec VirtualBox sans vérification VT-x/AMD-v** :
    ```bash
    minikube start --driver=virtualbox --no-vtx-check
