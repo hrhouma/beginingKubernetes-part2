@@ -44,6 +44,8 @@ kubectl get nodes
 minikube stop
 minikube delete
 minikube start --driver=docker
+exit
+echo "eleve ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/eleve
 sudo usermod -aG docker $USER
 newgrp docker
 ```
@@ -107,9 +109,12 @@ La sortie devrait être `root` si la modification des sudoers a réussi.
 Cette configuration résoudra le problème de permission et accordera les privilèges administratifs nécessaires à l'utilisateur "eleve".
 
 ```bash
+su
+exit
 minikube stop
 minikube delete
 minikube start --driver=docker
+echo "eleve ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/eleve
 sudo usermod -aG docker $USER
 newgrp docker
 ```
