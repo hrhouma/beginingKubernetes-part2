@@ -39,6 +39,65 @@ minikube status
 kubectl cluster-info
 kubectl get nodes
 ```
+
+🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇
+### 2 - Commandes troubleshooting Ubuntu 22.04: 
+🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇
+
+![image](https://github.com/user-attachments/assets/ef2a0353-6d25-4c1a-8dd2-e83b54bc9e79)
+
+Pour résoudre les problèmes mentionnés dans votre capture d'écran où Minikube échoue à démarrer en raison de problèmes de permissions Docker et pour ajouter l'utilisateur "eleve" à la liste des sudoers, suivez ces étapes :
+
+### Corriger le Problème de Permission Docker
+L'erreur que vous rencontrez indique que l'utilisateur "eleve" n'a pas les permissions nécessaires pour accéder au socket du démon Docker. C'est un problème courant lorsque Docker est installé mais que l'utilisateur n'est pas ajouté au groupe Docker. Pour résoudre cela, vous devez ajouter l'utilisateur au groupe Docker comme suggéré :
+
+```bash
+sudo usermod -aG docker eleve
+```
+
+Après avoir exécuté cette commande, vous devrez vous déconnecter et vous reconnecter pour que les changements prennent effet. Cela accordera à l'utilisateur "eleve" les permissions nécessaires pour exécuter des commandes Docker sans nécessiter sudo.
+
+### Ajouter "eleve" aux Sudoers
+Pour donner à "eleve" les privilèges sudo, vous avez plusieurs options :
+
+#### Utiliser la Commande visudo :
+Il est plus sûr de modifier le fichier sudoers en utilisant `visudo` car il vérifie les erreurs de syntaxe :
+```bash
+sudo visudo
+```
+À la fin du fichier, ajoutez la ligne suivante pour accorder à "eleve" des privilèges sudo complets :
+```sql
+eleve ALL=(ALL) NOPASSWD:ALL
+```
+Sauvegardez et quittez l'éditeur (généralement avec CTRL+X dans nano, en confirmant avec Y pour enregistrer les changements).
+
+#### Ajout Directement à Sudoers.d :
+Alternativement, vous pouvez créer un fichier dans le répertoire `sudoers.d` :
+```bash
+echo "eleve ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/eleve
+```
+Cette approche est avantageuse pour gérer plusieurs entrées personnalisées.
+
+### Tester les Changements
+Après avoir effectué ces changements, vous devriez tester que :
+
+- L'utilisateur "eleve" peut exécuter des commandes Docker sans sudo.
+- L'utilisateur "eleve" a des privilèges sudo sans qu'on lui demande de mot de passe.
+
+Exécutez la commande suivante pour tester l'accès Docker :
+```bash
+su - eleve
+docker run hello-world
+```
+Et pour tester l'accès sudo :
+```bash
+sudo whoami
+```
+La sortie devrait être `root` si la modification des sudoers a réussi.
+
+Cette configuration résoudra le problème de permission et accordera les privilèges administratifs nécessaires à l'utilisateur "eleve".
+
+
 🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇
 # 3 - ANNEXE 1 - DÉTAILS : 
 🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇
