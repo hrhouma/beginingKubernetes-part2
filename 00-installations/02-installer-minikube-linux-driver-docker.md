@@ -40,6 +40,15 @@ kubectl cluster-info
 kubectl get nodes
 ```
 
+```bash
+minikube stop
+minikube delete
+minikube start --driver=docker
+sudo usermod -aG docker $USER
+newgrp docker
+```
+
+
 🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇
 ### 2 - Commandes troubleshooting Ubuntu 22.04: 
 🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇
@@ -96,6 +105,14 @@ sudo whoami
 La sortie devrait être `root` si la modification des sudoers a réussi.
 
 Cette configuration résoudra le problème de permission et accordera les privilèges administratifs nécessaires à l'utilisateur "eleve".
+
+```bash
+minikube stop
+minikube delete
+minikube start --driver=docker
+sudo usermod -aG docker $USER
+newgrp docker
+```
 
 
 🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇
