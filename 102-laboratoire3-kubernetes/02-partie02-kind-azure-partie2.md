@@ -382,6 +382,63 @@ Avec ces commandes, vous pouvez gérer efficacement plusieurs clusters Kubernete
 
 ### Commandes supplémentaires à ne pas oublier
 
+
+```sh
+cd ..
+git clone https://github.com/alihussainia/Monitoring-Kubernetes-Cluster.git
+cd Monitoring-Kubernetes-Cluster
+kind create cluster
+kind get clusters
+kubectl cluster-info
+kubectl get nodes
+kubectl get all -A
+
+cd Deployment
+cat deployment.yml
+kubectl apply -f deployment.yml
+kubectl get deploy
+kubectl get pods
+kubectl apply -f service.yml
+kubectl get svc
+
+wget https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+
+vim components.yaml
+
+# Modifier le fichier dans l'éditeur vim (ou de votre choix) et ajouter ceci sous deployment --> containers --> args :
+
+--kubelet-insecure-tls
+
+kubectl create namespace monitoring
+cd ..
+kubectl create -f ./ -R
+
+kubectl get nodes --selector=kubernetes.io/role!=master -o jsonpath={.items[*].status.addresses[?\(@.type==\"InternalIP\"\)].address}
+
+# Accéder aux métriques :
+172.18.0.2:30000/graph
+kube_node_created
+
+kubectl top nodes
+kubectl top pods
+
+# Dashboard Grafana
+Visitez http://[NODEIP]:32000 pour voir le tableau de bord Grafana.
+Connectez-vous avec admin et admin pour le nom d'utilisateur et le mot de passe. Vous pouvez réinitialiser le mot de passe à l'écran suivant ou cliquer sur Skip.
+Sur la page Welcome to Grafana, cliquez sur l'icône + dans la barre latérale en haut à gauche de l'écran.
+Cliquez sur l'élément déroulant nommé imports parmi les options disponibles.
+Entrez une valeur ID de 10000 dans la boîte de dialogue Grafana.com Dashboard et cliquez sur Load. Cela chargera le tableau de bord Cluster Monitoring for Kubernetes.
+Note : Vous pouvez trouver une liste de tableaux de bord préconfigurés sur https://grafana.com/grafana/dashboards. Chacun aura un ID que vous pouvez copier dans l'écran Import dashboard de Grafana.
+
+Sur l'écran suivant, vous verrez une liste déroulante Select a Prometheus data source. Sélectionnez prometheus dans la liste et cliquez sur Import. Votre tableau de bord sera maintenant chargé.
+Cliquez sur le menu déroulant Cluster Monitoring for Kubernetes en haut à gauche de l'écran. Reprenez les étapes pour importer un tableau de bord, mais cette fois, entrez un ID de 8588. Cela chargera le tableau de bord Kubernetes Deployment Statefulset Daemonset metrics.
+Si vous cliquez sur le menu déroulant du nom du tableau de bord en haut à gauche de l'écran, vous verrez vos deux tableaux de bord listés et vous pourrez maintenant passer de l'un à l'autre.
+Importez le tableau de bord avec un ID de 10694. Ce tableau de bord s'appelle Container Statistics.
+À partir de là, vous pouvez charger d'autres tableaux de bord ou créer les vôtres !
+```
+
+---
+
 ```sh
 cd ..
 git clone https://github.com/alihussainia/Monitoring-Kubernetes-Cluster.git
@@ -435,3 +492,7 @@ If you click on the dashboard name drop-down in the upper-left corner of the scr
 Import the dashboard with an ID of 10694. This dashboard is called Container Statistics.
 From here you can load other dashboards or create your own!
 ```
+
+
+
+
