@@ -1,7 +1,10 @@
-Vous avez raison, il est nécessaire de configurer l'utilisateur `eleve` avec les privilèges sudo avant de procéder à l'installation de Docker et de le rajouter au groupe Docker. Voici la séquence correcte des commandes, avec l'ajout de l'utilisateur aux sudoers en premier :
+
+
 
 ### Mise à jour de la séquence de commandes pour Ubuntu 22.04:
 
+- Il est nécessaire de configurer l'utilisateur `eleve` avec les privilèges sudo avant de procéder à l'installation de Docker et de le rajouter au groupe Docker.
+  
 1. **Ajouter l'utilisateur 'eleve' aux sudoers sans demande de mot de passe**
    ```bash
    su
@@ -58,4 +61,4 @@ Vous avez raison, il est nécessaire de configurer l'utilisateur `eleve` avec le
    minikube status
    ```
 
-Cette séquence garantit que `eleve` a les privilèges nécessaires avant de tenter toute installation ou modification du système, ce qui devrait résoudre les problèmes de permissions que vous avez rencontrés.
+
