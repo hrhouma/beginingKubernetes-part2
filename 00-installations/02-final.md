@@ -60,7 +60,24 @@
 
 # Partie 2:
 
-
+```bash
+minikube status
+git clone https://github.com/hrhouma/kubernetes-prom-graf-1.git
+cd kubernetes-prom-graf-1/
+kubectl create namespace monitoring
+kubectl create namespace kubernetes-dashboard
+kubectl apply -f kube-state-metrics-service-account.yaml
+kubectl apply -f kube-state-metrics-cluster-role.yaml
+kubectl apply -f kube-state-metrics-cluster-role-binding.yaml
+kubectl apply -f kube-state-metrics-deployment.yaml
+kubectl apply -f kube-state-metrics-service.yaml
+kubectl apply -f grafana-configmap.yaml
+kubectl apply -f grafana-deployment.yaml
+kubectl apply -f grafana-service.yaml
+kubectl apply -f metrics-server-prometheus.deployment.yml
+kubectl apply -f Web-UI-dashboard-adminuser.yml
+kubectl apply -f Web-UI-newDeploy.yml
+```
 # Partie 3:
 
 # Partie 4:
