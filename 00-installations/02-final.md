@@ -1,7 +1,4 @@
-
-
-
-### Mise à jour de la séquence de commandes pour Ubuntu 22.04:
+# Partie 1:
 
 - Il est nécessaire de configurer l'utilisateur `eleve` avec les privilèges sudo avant de procéder à l'installation de Docker et de le rajouter au groupe Docker.
   
@@ -61,4 +58,14 @@
    minikube status
    ```
 
+# Partie 2:
+
+
+# Partie 3:
+
+# Partie 4:
+
+# Partie 5:
+
+# Partie 6:
 
