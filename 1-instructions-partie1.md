@@ -1,5 +1,3 @@
-Ah, pour ajouter des émojis à votre README pour le rendre plus visuel et engageant, voici une suggestion avec des émojis appropriés pour chaque partie :
-
 # IMPORTANT - Plan des pratiques pour K8S (PARTIE1)
 
 # Partie1. Installation de minikube:
