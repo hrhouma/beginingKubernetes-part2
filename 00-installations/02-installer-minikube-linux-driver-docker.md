@@ -3,6 +3,7 @@
 🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇
 - https://schoolofdevops.github.io/kubernetes-the-hard-way/02-client-tools/
 - https://medium.com/@areesmoon/installing-minikube-on-ubuntu-20-04-lts-focal-fossa-b10fad9d0511
+- https://medium.com/cypik/installing-minikube-on-ubuntu-22-04-lts-77f5abaf3d39
 
 🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇
 ### 2 - Commandes à exécuter dans une machine Ubuntu 22.04: 
